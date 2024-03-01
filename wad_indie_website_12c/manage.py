@@ -19,3 +19,10 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+print("wergwsfsadfa")
+print("wergwsfsadfa")
+print("wergwsfsadfa")
+print("wergwsfsadfa")
+print("wergwsfsadfa")
+print("wergwsfsadfa")
