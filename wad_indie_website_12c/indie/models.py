@@ -36,8 +36,8 @@ class Game(models.Model):
 class Feedback(models.Model):
     text = models.CharField(max_length=9999, blank=True, null=True)
     rating = models.IntegerField(blank=True, null=True)
-    user = models.ForeignKey(User)
-    game = models.ForeignKey(Game)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
 
 class UserProfile(models.Model):
@@ -46,7 +46,9 @@ class UserProfile(models.Model):
     bio = models.CharField(max_length=9999, blank=True, null=True)
     paypal_address = models.URLField(blank=True, null=True)
     picture = models.ImageField(upload_to="profile_images", blank=True, null=True)
-    fav_genre = models.ForeignKey(Genre)
+    fav_genre = models.ForeignKey(
+        Genre, on_delete=models.SET_NULL, null=True, blank=True
+    )
 
     def __str__(self):
         return self.user.username
