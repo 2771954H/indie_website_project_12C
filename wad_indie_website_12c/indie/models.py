@@ -18,12 +18,18 @@ class Genre(models.Model):
 class Game(models.Model):
     name = models.CharField(max_length=128, unique=True)
     price = models.FloatField(default=0)
-    likes = models.IntegerField(default=0)
-    views = models.IntegerField(default=0)
-    downloads = models.IntegerField(default=0)
+
+    def price_formatted(self):
+        return f"£{self.price:.2f}"
+
+    price_formatted.short_description = "Price"
+
+    likes = models.IntegerField(default=0, blank=True)
+    views = models.IntegerField(default=0, blank=True)
+    downloads = models.IntegerField(default=0, blank=True)
 
     slug = models.SlugField(unique=True)
-    genre = models.ManyToManyField(Genre)
+    genre = models.ForeignKey(Genre, on_delete=models.SET_NULL, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -34,8 +40,8 @@ class Game(models.Model):
 
 
 class Feedback(models.Model):
-    text = models.CharField(max_length=9999, blank=True, null=True)
-    rating = models.IntegerField(blank=True, null=True)
+    text = models.CharField(max_length=9999)
+    rating = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
