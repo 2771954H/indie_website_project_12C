@@ -4,7 +4,8 @@ from django.template.defaultfilters import slugify
 
 
 class Genre(models.Model):
-    name = models.CharField(max_length=128, unique=True)
+    NAME_MAX_LENGTH = 128
+    name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
     slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
@@ -16,6 +17,7 @@ class Genre(models.Model):
 
 
 class Game(models.Model):
+    NAME_MAX_LENGTH = 128
     name = models.CharField(max_length=128, unique=True)
     price = models.FloatField(default=0)
 
@@ -40,16 +42,20 @@ class Game(models.Model):
 
 
 class Feedback(models.Model):
-    text = models.CharField(max_length=9999)
+    MAX_INPUT_LENGTH = 9999
+
+    text = models.CharField(max_length=MAX_INPUT_LENGTH)
     rating = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
 
 class UserProfile(models.Model):
+    MAX_INPUT_LENGTH = 9999
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     is_dev = models.BooleanField(default=False)
-    bio = models.CharField(max_length=9999, blank=True, null=True)
+    bio = models.CharField(max_length=MAX_INPUT_LENGTH, blank=True, null=True)
     paypal_address = models.URLField(blank=True, null=True)
     picture = models.ImageField(upload_to="profile_images", blank=True, null=True)
     fav_genre = models.ForeignKey(
