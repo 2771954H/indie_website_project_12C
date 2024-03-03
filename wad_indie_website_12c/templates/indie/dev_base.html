@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load rango_template_tags %}
+
+<html>
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <title>
+            Rango - 
+            {% block title_block %}
+                Indie
+            {% endblock %}
+
+        </title>
+
+    <body>
+        <div>
+            {% block top_bar_block %}
+                <li>
+                    <img src="{% static 'images/logo.jpeg' %}"
+                        alt="Indie Logo" />
+                    {{ pagename }}
+                    <a href="{% url 'indie:upload_new_game' %}">Upload New Game</a>
+                    <a href="{% url 'indie:logout' %}">Logout</a>
+                </li>
+            {% endblock %}
+        </div>
+
+        <div>
+            {% block body_block %}
+            {% endblock %}
+        </div>
+
+        <div>
+            {% block bottom_bar_block %}
+            {% endblock %}
+        </div>
+        
+        
+</html>
