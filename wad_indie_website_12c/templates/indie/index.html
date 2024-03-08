@@ -1,9 +1,185 @@
-{% extends "indie/dev_base.html" %}
+<!DOCTYPE html>
 {% load staticfiles %}
 
-<!Just testing- shouldnt actually extend dev_base>
+<html>
+    <head>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h1><img src="{% static 'images/logo.jpeg' %}" alt="Indie Logo" /></h1>
+                <h1 style="flex-grow: 1; text-align: center; margin-left: 20px;">Browse</h1>
+                <h1>
+                    <form>
+                        <label for="sitem">Search:</label>
+                        <input type="text" id="sitem" name="sitem" placeholder="Enter Game/Developer">
+                    </form>
+                </h1>
+                <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:logout' %}">Logout</a></h1>
+        </div>
 
-{% block body_block %}
-    <a href="{% url 'indie:dev_home' %}">Dev Home</a>
+        <!--CSS shi-->
+        <style>
 
-{% endblock %}
+            h1{
+                font-size: 40px;
+            }
+
+            body {
+                margin: 50px;
+                background-color:antiquewhite;
+            }
+
+            .tabs{
+                display: flex;
+                flex-wrap: wrap;
+                max-width: 2000px;
+                font-family: sans-serif;
+            }
+
+            .tabs-genre{
+                display: flex;
+                flex-wrap: wrap;
+                max-width: 2000px;
+                font-family: sans-serif;
+            }
+
+            .gtabs{
+                display: flex;
+                flex-wrap: wrap;
+                max-width: 2000px;
+                font-family: sans-serif;
+            }
+
+            .tabs__label{
+                padding: 10px 16px;
+                cursor: pointer;
+            }
+
+            .gtabs__label{
+                padding: 10px 16px;
+                cursor: pointer;
+            }
+
+            .tabs__radio{
+                display: none;
+            }
+
+            .gtabs__radio{
+                display: none;
+            }
+
+            .tabs__content{
+                padding-bottom: 200px;
+                order: 1;
+                width: 100%;
+                border-top: 3px solid lightgray;
+                border-bottom: 3px solid lightgray;
+                line-height: 1.5;
+                font-size: 0.9em;
+                display: none;
+            }
+
+            .gtabs__content{
+                padding-bottom: 200px;
+                order: 1;
+                width: 100%;
+                border-top: 3px solid lightgray;
+                border-bottom: 3px solid lightgray;
+                line-height: 1.5;
+                font-size: 0.9em;
+                display: none;
+            }
+
+            /*customize look of label on select */
+            .tabs__radio:checked+.tabs__label{
+                font-weight: bold;
+                color: cadetblue;
+                border-bottom: 2px solid cadetblue;
+            }
+
+            .gtabs__radio:checked+.gtabs__label{
+                font-weight: bold;
+                color: cadetblue;
+                border-bottom: 2px solid cadetblue;
+            }
+
+            .tabs__radio:checked+.tabs__label+.tabs__content{
+                display: initial;
+            }
+
+            .gtabs__radio:checked+.gtabs__label+.gtabs__content{
+                display: initial;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>
+            <div class="tabs">
+                <!--tab for FEATURED games-->
+                <input type="radio" class="tabs__radio" name="tabs-poprecent" id="featured" checked>
+                <label for="featured" class="tabs__label">Featured</label>
+                <div class="tabs__content">
+                    Content for Featured Games
+                </div>
+                <!--tab for POPULAR games-->
+                <input type="radio" class="tabs__radio" name="tabs-poprecent" id="popular">
+                <label for="popular" class="tabs__label">Popular</label>
+                <div class="tabs__content">
+                    Content for Popular Games
+                </div>
+                <!--tab for NEW games-->
+                <input type="radio" class="tabs__radio" name="tabs-poprecent" id="new">
+                <label for="new" class="tabs__label">New</label>
+                <div class="tabs__content">
+                    Content for New Games
+                </div>
+                <!--tab for TOP RATED games-->
+                <input type="radio" class="tabs__radio" name="tabs-poprecent" id="top">
+                <label for="top" class="tabs__label">Top Rated</label>
+                <div class="tabs__content">
+                    Content for Top Rated Games
+                </div>
+            </div>
+        </h2>
+        <div>
+            <h1 style="text-align: left;">Genre</h1>
+        </div>
+        <h2>
+            <div class="tabs-genre">
+                <!--tab for FEATURED games-->
+                <input type="radio" class="gtabs__radio" name="tabs-genre" id="action" checked>
+                <label for="action" class="gtabs__label">Action</label>
+                <div class="gtabs__content">
+                    Content for Action Games
+                </div>
+                <!--tab for POPULAR games-->
+                <input type="radio" class="gtabs__radio" name="tabs-genre" id="adv">
+                <label for="adv" class="gtabs__label">Adventure</label>
+                <div class="gtabs__content">
+                    Content for Adventure Games
+                </div>
+                <!--tab for NEW games-->
+                <input type="radio" class="gtabs__radio" name="tabs-genre" id="plat">
+                <label for="plat" class="gtabs__label">Platformer</label>
+                <div class="gtabs__content">
+                    Content for Platformer Games
+                </div>
+                <!--tab for TOP RATED games-->
+                <input type="radio" class="gtabs__radio" name="tabs-genre" id="puzzle">
+                <label for="puzzle" class="gtabs__label">Puzzle</label>
+                <div class="gtabs__content">
+                    Content for Puzzle Games
+                </div>
+                <!--tab for TOP RATED games-->
+                <input type="radio" class="gtabs__radio" name="tabs-genre" id="rpg">
+                <label for="rpg" class="gtabs__label">RPG</label>
+                <div class="gtabs__content">
+                    Content for RPG Games
+                </div>
+            </div>
+        </h2>
+    </body>
+
+
+    {% block  title_block %}
+        <a href="{% url 'indie:dev_home' %}">Dev Home</a>
+    {% endblock %}
+</html>
