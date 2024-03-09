@@ -1,0 +1,90 @@
+h1{
+    font-size: 40px;
+}
+
+body {
+    margin: 50px;
+    background-color:antiquewhite;
+}
+
+.tabs{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 2000px;
+    font-family: sans-serif;
+}
+
+.tabs-genre{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 2000px;
+    font-family: sans-serif;
+}
+
+.gtabs{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 2000px;
+    font-family: sans-serif;
+}
+
+.tabs__label{
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+.gtabs__label{
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+.tabs__radio{
+    display: none;
+}
+
+.gtabs__radio{
+    display: none;
+}
+
+.tabs__content{
+    padding-bottom: 200px;
+    order: 1;
+    width: 100%;
+    border-top: 3px solid lightgray;
+    border-bottom: 3px solid lightgray;
+    line-height: 1.5;
+    font-size: 0.9em;
+    display: none;
+}
+
+.gtabs__content{
+    padding-bottom: 200px;
+    order: 1;
+    width: 100%;
+    border-top: 3px solid lightgray;
+    border-bottom: 3px solid lightgray;
+    line-height: 1.5;
+    font-size: 0.9em;
+    display: none;
+}
+
+/*customize look of label on select */
+.tabs__radio:checked+.tabs__label{
+    font-weight: bold;
+    color: cadetblue;
+    border-bottom: 2px solid cadetblue;
+}
+
+.gtabs__radio:checked+.gtabs__label{
+    font-weight: bold;
+    color: cadetblue;
+    border-bottom: 2px solid cadetblue;
+}
+
+.tabs__radio:checked+.tabs__label+.tabs__content{
+    display: initial;
+}
+
+.gtabs__radio:checked+.gtabs__label+.gtabs__content{
+    display: initial;
+}
