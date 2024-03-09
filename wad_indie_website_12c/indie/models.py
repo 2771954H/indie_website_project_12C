@@ -14,6 +14,23 @@ class Genre(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class UserProfile(models.Model):
+    MAX_INPUT_LENGTH = 9999
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique = True)
+    is_dev = models.BooleanField(default=False)
+    bio = models.CharField(max_length=MAX_INPUT_LENGTH, blank=True, null=True)
+    paypal_address = models.URLField(blank=True, null=True)
+    picture = models.ImageField(upload_to="profile_images", blank=True, null=True)
+    fav_genre = models.ForeignKey(
+        Genre, on_delete=models.SET_NULL, null=True, blank=True
+    )
+    
+
+    def __str__(self):
+        return self.user.username   
 
 
 class Game(models.Model):
@@ -32,6 +49,12 @@ class Game(models.Model):
 
     slug = models.SlugField(unique=True)
     genre = models.ForeignKey(Genre, on_delete=models.SET_NULL, null=True, blank=True)
+    dev = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null =True)
+    
+    def dev_check(self):
+        dev = self._meta.get_fields()[7]
+        if not dev._meta.get_fields()[1]:
+            raise KeyError("Games creator must be a dev user")
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -50,17 +73,3 @@ class Feedback(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
 
-class UserProfile(models.Model):
-    MAX_INPUT_LENGTH = 9999
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    is_dev = models.BooleanField(default=False)
-    bio = models.CharField(max_length=MAX_INPUT_LENGTH, blank=True, null=True)
-    paypal_address = models.URLField(blank=True, null=True)
-    picture = models.ImageField(upload_to="profile_images", blank=True, null=True)
-    fav_genre = models.ForeignKey(
-        Genre, on_delete=models.SET_NULL, null=True, blank=True
-    )
-
-    def __str__(self):
-        return self.user.username
