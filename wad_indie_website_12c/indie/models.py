@@ -51,6 +51,7 @@ class Game(models.Model):
     genre = models.ForeignKey(Genre, on_delete=models.SET_NULL, null=True, blank=True)
     dev = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null =True)
     
+    #Have not tested this at all- no idea if it actually works
     def dev_check(self):
         dev = self._meta.get_fields()[7]
         if not dev._meta.get_fields()[1]:
@@ -69,7 +70,10 @@ class Feedback(models.Model):
 
     text = models.CharField(max_length=MAX_INPUT_LENGTH)
     rating = models.IntegerField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    userProfile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null = True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f"{self.userProfile} wrote review for {self.game}. Gave rating of {self.rating}"
 
 

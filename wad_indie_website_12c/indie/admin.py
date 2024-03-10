@@ -8,11 +8,11 @@ class GenreAdmin(admin.ModelAdmin):
 
 class GameAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
-    list_display = ["name", "price_formatted", "likes", "views", "downloads", "genre"]
+    list_display = ["name", "price_formatted", "likes", "views", "downloads", "genre", "dev"]
 
 
 class FeedbackAdmin(admin.ModelAdmin):
-    list_display = ["game", "user", "rating", "text"]
+    list_display = ["game", "userProfile", "rating", "text"]
 
 
 admin.site.register(Genre, GenreAdmin)
