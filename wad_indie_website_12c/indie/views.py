@@ -18,6 +18,18 @@ def index(request):
     return render(request, "indie/index.html", context=context_dict)
 
 
+def show_game(request, game_name_slug):
+    context_dict = {}
+
+    try:
+        game = Game.objects.get(slug=game_name_slug)
+        context_dict["game"] = game
+    except Game.DoesNotExist:
+        context_dict["game"] = None
+
+    return render(request, "indie/game_page.html", context=context_dict)
+
+
 def logout(request):
     return index(request)
 

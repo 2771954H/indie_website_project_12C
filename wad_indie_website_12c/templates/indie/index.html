@@ -26,6 +26,7 @@
                 <div class="tabs__content">
                     {% for game in featured_games %}
                     <div class="card">
+                        <a href="{% url 'indie:show_game' game.slug %}">
                         {% if game.image %}
                             <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
                         {% else %}
@@ -35,14 +36,16 @@
                             <h4>{{ game.name }}</h4>
                             <p>{{ game.genre }}</p>
                             {% if game.featured %}
-                                <p>⭐ FEATURED ⭐</p>
+                            <p>⭐ FEATURED ⭐</p>
                             {% endif %}
                             {% if game.description %}
-                                <p>{{ game.description }}</p>
+                            <p>{{ game.description }}</p>
                             {% endif %}
                             <p>{{ game.likes }} ❤️, {{ game.views }} 👁️, {{ game.downloads }} ⬇️</p>
                             <p>{{ game.upload_date|date:"SHORT_DATE_FORMAT" }}</p>
+                            <h4>{{ game.price_formatted }}</h4>
                         </div>
+                    </a>
                     </div>
                     {% endfor %}
                 </div>
@@ -52,7 +55,8 @@
                 <div class="tabs__content">
                     {% for game in popular_games %}
                     <div class="card">
-                        {% if game.image %}
+                        <a href="{% url 'indie:show_game' game.slug %}">
+                            {% if game.image %}
                             <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
                         {% else %}
                             <img class = "card_image" src="{% static 'images/no_image.jpg' %}" alt="{{ game.name }}">
@@ -68,8 +72,10 @@
                             {% endif %}
                             <p>{{ game.likes }} ❤️, {{ game.views }} 👁️, {{ game.downloads }} ⬇️</p>
                             <p>{{ game.upload_date|date:"SHORT_DATE_FORMAT" }}</p>
+                            <h4>{{ game.price_formatted }}</h4>
                         </div>
-                    </div>
+                    </a>
+                </div>
                     {% endfor %}
                 </div>
                 <!--tab for NEW games-->
@@ -78,7 +84,8 @@
                 <div class="tabs__content">
                     {% for game in new_games %}
                     <div class="card">
-                        {% if game.image %}
+                        <a href="{% url 'indie:show_game' game.slug %}">
+                            {% if game.image %}
                             <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
                         {% else %}
                             <img class = "card_image" src="{% static 'images/no_image.jpg' %}" alt="{{ game.name }}">
@@ -94,8 +101,10 @@
                             {% endif %}
                             <p>{{ game.likes }} ❤️, {{ game.views }} 👁️, {{ game.downloads }} ⬇️</p>
                             <p>{{ game.upload_date|date:"SHORT_DATE_FORMAT" }}</p>
+                            <h4>{{ game.price_formatted }}</h4>
                         </div>
-                    </div>
+                    </a>
+                </div>
                     {% endfor %}
                 </div>
                 <!--tab for TOP RATED games-->
@@ -104,7 +113,8 @@
                 <div class="tabs__content">
                     {% for game in top_games %}
                     <div class="card">
-                        {% if game.image %}
+                        <a href="{% url 'indie:show_game' game.slug %}">
+                            {% if game.image %}
                             <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
                         {% else %}
                             <img class = "card_image" src="{% static 'images/no_image.jpg' %}" alt="{{ game.name }}">
@@ -120,8 +130,10 @@
                             {% endif %}
                             <p>{{ game.likes }} ❤️, {{ game.views }} 👁️, {{ game.downloads }} ⬇️</p>
                             <p>{{ game.upload_date|date:"SHORT_DATE_FORMAT" }}</p>
+                            <h4>{{ game.price_formatted }}</h4>
                         </div>
-                    </div>
+                    </a>
+                </div>
                     {% endfor %}
                 </div>
             </div>

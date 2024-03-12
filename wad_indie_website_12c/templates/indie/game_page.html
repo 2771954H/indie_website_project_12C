@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+{% block title_block %}
+    {% if game %}
+    <h1>{{ game.name }}</h1>
+    {% else %}
+        Unknown Game
+    {% endif %}
+{% endblock %}
+
+{% block body_block %}
+    its a game ig
+{% endblock %}
