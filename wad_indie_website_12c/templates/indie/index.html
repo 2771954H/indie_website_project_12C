@@ -24,7 +24,7 @@
                 <input type="radio" class="tabs__radio" name="tabs-poprecent" id="featured" checked>
                 <label for="featured" class="tabs__label">Featured</label>
                 <div class="tabs__content">
-                    {% for game in games %}
+                    {% for game in featured_games %}
                     <div class="card">
                         {% if game.image %}
                             <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
@@ -44,19 +44,61 @@
                 <input type="radio" class="tabs__radio" name="tabs-poprecent" id="popular">
                 <label for="popular" class="tabs__label">Popular</label>
                 <div class="tabs__content">
-                    Content for Popular Games
+                    {% for game in popular_games %}
+                    <div class="card">
+                        {% if game.image %}
+                            <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
+                        {% else %}
+                            <img class = "card_image" src="{% static 'no_image.jpg' %}" alt="{{ game.name }}">
+                        {% endif %}
+                        <div class="container">
+                            <h4>{{ game.name }}</h4>
+                            {% if game.description %}
+                                <p>{{ game.description }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
                 <!--tab for NEW games-->
                 <input type="radio" class="tabs__radio" name="tabs-poprecent" id="new">
                 <label for="new" class="tabs__label">New</label>
                 <div class="tabs__content">
-                    Content for New Games
+                    {% for game in new_games %}
+                    <div class="card">
+                        {% if game.image %}
+                            <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
+                        {% else %}
+                            <img class = "card_image" src="{% static 'no_image.jpg' %}" alt="{{ game.name }}">
+                        {% endif %}
+                        <div class="container">
+                            <h4>{{ game.name }}</h4>
+                            {% if game.description %}
+                                <p>{{ game.description }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
                 <!--tab for TOP RATED games-->
                 <input type="radio" class="tabs__radio" name="tabs-poprecent" id="top">
                 <label for="top" class="tabs__label">Top Rated</label>
                 <div class="tabs__content">
-                    Content for Top Rated Games
+                    {% for game in top_games %}
+                    <div class="card">
+                        {% if game.image %}
+                            <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
+                        {% else %}
+                            <img class = "card_image" src="{% static 'no_image.jpg' %}" alt="{{ game.name }}">
+                        {% endif %}
+                        <div class="container">
+                            <h4>{{ game.name }}</h4>
+                            {% if game.description %}
+                                <p>{{ game.description }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </h2>

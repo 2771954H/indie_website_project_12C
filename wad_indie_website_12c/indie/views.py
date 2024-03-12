@@ -7,8 +7,14 @@ from indie.models import Game
 def index(request):
     context_dict = {}
     context_dict["pagename"] = "Index"
-    games_list = Game.objects.order_by("-likes")[:4]
-    context_dict["games"] = games_list
+    featured_games_list = Game.objects.filter(featured=True)[:4]
+    popular_games_list = Game.objects.order_by("downloads")[:4]
+    new_games_list = Game.objects.order_by("-upload_date")[:4]
+    top_games_list = Game.objects.order_by("likes")[:4]
+    context_dict["featured_games"] = featured_games_list
+    context_dict["popular_games"] = popular_games_list
+    context_dict["new_games"] = new_games_list
+    context_dict["top_games"] = top_games_list
     return render(request, "indie/index.html", context=context_dict)
 
 

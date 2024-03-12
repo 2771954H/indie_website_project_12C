@@ -53,6 +53,9 @@ class Game(models.Model):
     genre = models.ForeignKey(Genre, on_delete=models.SET_NULL, null=True, blank=True)
     dev = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null=True)
 
+    featured = models.BooleanField(default=False)
+    upload_date = models.DateTimeField(auto_now_add=True)
+
     # Have not tested this at all- no idea if it actually works
     def dev_check(self):
         dev = self._meta.get_fields()[7]

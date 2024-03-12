@@ -3,6 +3,7 @@ import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wad_indie_website_12c.settings")
 
 import django
+from random import randint
 
 django.setup()
 from indie.models import Genre, Game, Feedback, UserProfile
@@ -27,26 +28,39 @@ def populate():
             return self.name
 
     steve_games = [
-        {"name": "Jumper of Planet S", "price": 30, "genre": Genres.FARMING_SIMULATOR},
-        {"name": "Empty Sir for Dummies", "price": 15, "genre": Genres.HOLLOW_LIKE},
+        {
+            "name": "Jumper of Planet S",
+            "price": 30,
+            "genre": Genres.FARMING_SIMULATOR,
+        },
+        {
+            "name": "Empty Sir for Dummies",
+            "price": 15,
+            "genre": Genres.HOLLOW_LIKE,
+            "description": "dummy text",
+        },
         {
             "name": "Crush those Pistachio Shells",
             "price": 150,
             "genre": Genres.FISHING_HORROR_SIMULATOR,
             "description": "Rip-off Candy Crush",
+            "featured": True,
         },
     ]
 
     spindie_games = [
         {
-            "name": "Destroyer of only one acre of land, its really not that big of a deal",
+            "name": "Destroyer of only one acre of land",
             "price": 0.5,
             "genre": Genres.ACTION_ADVENTURE,
+            "description": "its really not that big of a deal",
+            "featured": True,
         },
         {
-            "name": "Destroyer of only one acre of land, its really not that big of a deal 2",
+            "name": "Destroyer of only one acre of land 2",
             "price": 1,
             "genre": Genres.RACING,
+            "description": "its still not really that big of a deal",
         },
     ]
 
@@ -83,10 +97,7 @@ def populate():
     for dev, games in devs.items():
         d = add_dev(dev)
         for g in games:
-            game = add_game(d, g["name"], g["price"], g["genre"])
-            if g.get("description"):
-                game.description = g["description"]
-                game.save()
+            game = add_game(d, g)
 
     for feedback in feedbacks:
         u = add_user(feedback["user"])
@@ -120,11 +131,19 @@ def get_dev(dev):
     return d
 
 
-def add_game(dev, name, price, genre):
+def add_game(dev, game_dict):
     d = get_dev(dev)
-    g = Game.objects.get_or_create(name=name, dev=d)[0]
-    g.price = price
-    g.genre = Genre.objects.get(name=genre)
+    g = Game.objects.get_or_create(name=game_dict.get("name"), dev=d)[0]
+    g.price = game_dict.get("price")
+    g.description = game_dict.get("description")
+    if game_dict.get("genre"):
+        g.genre = Genre.objects.get(name=game_dict.get("genre"))
+
+    g.likes = randint(0, 99)
+    g.views = randint(0, 99)
+    g.downloads = randint(0, 99)
+    if game_dict.get("featured"):
+        g.featured = game_dict.get("featured")
     g.save()
     return g
 
