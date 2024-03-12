@@ -8,7 +8,17 @@ class GenreAdmin(admin.ModelAdmin):
 
 class GameAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
-    list_display = ["name", "price_formatted", "likes", "views", "downloads", "genre", "dev"]
+    list_display = [
+        "name",
+        "price_formatted",
+        "likes",
+        "views",
+        "downloads",
+        "genre",
+        "dev",
+        "featured",
+        "upload_date",
+    ]
 
 
 class FeedbackAdmin(admin.ModelAdmin):

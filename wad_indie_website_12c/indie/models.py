@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.utils.timezone import now
 
 
 class Genre(models.Model):
@@ -54,7 +55,7 @@ class Game(models.Model):
     dev = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null=True)
 
     featured = models.BooleanField(default=False)
-    upload_date = models.DateTimeField(auto_now_add=True)
+    upload_date = models.DateTimeField(default=now)
 
     # Have not tested this at all- no idea if it actually works
     def dev_check(self):

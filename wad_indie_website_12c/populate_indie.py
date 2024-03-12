@@ -3,7 +3,8 @@ import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wad_indie_website_12c.settings")
 
 import django
-from random import randint
+import random
+from datetime import datetime, timedelta, timezone
 
 django.setup()
 from indie.models import Genre, Game, Feedback, UserProfile
@@ -139,11 +140,22 @@ def add_game(dev, game_dict):
     if game_dict.get("genre"):
         g.genre = Genre.objects.get(name=game_dict.get("genre"))
 
-    g.likes = randint(0, 99)
-    g.views = randint(0, 99)
-    g.downloads = randint(0, 99)
+    g.likes = random.randint(0, 99)
+    g.views = random.randint(0, 99)
+    g.downloads = random.randint(0, 99)
     if game_dict.get("featured"):
         g.featured = game_dict.get("featured")
+
+    def random_date(start, end):
+        start_time = datetime.strptime(start, "%d/%m/%Y")
+        end_time = datetime.strptime(end, "%d/%m/%Y")
+        time_diff = end_time - start_time
+        random_time = start_time + timedelta(
+            seconds=random.random() * time_diff.total_seconds()
+        )
+        return random_time.replace(tzinfo=timezone.utc)
+
+    g.upload_date = random_date("1/1/2018", "1/1/2024")
     g.save()
     return g
 
