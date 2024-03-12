@@ -4,10 +4,12 @@
     {% if game %}
     <h1>{{ game.name }}</h1>
     {% else %}
-        Unknown Game
+    <h1>Unknown Game</h1>
     {% endif %}
 {% endblock %}
 
 {% block body_block %}
+    {% if game %}
     its a game ig
+    {% endif %}
 {% endblock %}
