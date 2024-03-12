@@ -7,7 +7,7 @@
     </head>
     <body>
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h1><img src="{% static 'images/logo.jpeg' %}" alt="Indie Logo" /></h1>
+            <img src="{% static 'images/logo.jpg' %}" alt="Indie Logo" style="height:100px"/>
             <h1 style="flex-grow: 1; text-align: center; margin-left: 20px;">Browse</h1>
             <h1>
                 <form>
@@ -29,10 +29,11 @@
                         {% if game.image %}
                             <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
                         {% else %}
-                            <img class = "card_image" src="{% static 'no_image.jpg' %}" alt="{{ game.name }}">
+                            <img class = "card_image" src="{% static 'images/no_image.jpg' %}" alt="{{ game.name }}">
                         {% endif %}
                         <div class="container">
                             <h4>{{ game.name }}</h4>
+                            <p>{{ game.genre }}</p>
                             {% if game.featured %}
                                 <p>⭐ FEATURED ⭐</p>
                             {% endif %}
@@ -54,10 +55,11 @@
                         {% if game.image %}
                             <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
                         {% else %}
-                            <img class = "card_image" src="{% static 'no_image.jpg' %}" alt="{{ game.name }}">
+                            <img class = "card_image" src="{% static 'images/no_image.jpg' %}" alt="{{ game.name }}">
                         {% endif %}
                         <div class="container">
                             <h4>{{ game.name }}</h4>
+                            <p>{{ game.genre }}</p>
                             {% if game.featured %}
                                 <p>⭐ FEATURED ⭐</p>
                             {% endif %}
@@ -79,10 +81,11 @@
                         {% if game.image %}
                             <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
                         {% else %}
-                            <img class = "card_image" src="{% static 'no_image.jpg' %}" alt="{{ game.name }}">
+                            <img class = "card_image" src="{% static 'images/no_image.jpg' %}" alt="{{ game.name }}">
                         {% endif %}
                         <div class="container">
                             <h4>{{ game.name }}</h4>
+                            <p>{{ game.genre }}</p>
                             {% if game.featured %}
                                 <p>⭐ FEATURED ⭐</p>
                             {% endif %}
@@ -104,10 +107,11 @@
                         {% if game.image %}
                             <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
                         {% else %}
-                            <img class = "card_image" src="{% static 'no_image.jpg' %}" alt="{{ game.name }}">
+                            <img class = "card_image" src="{% static 'images/no_image.jpg' %}" alt="{{ game.name }}">
                         {% endif %}
                         <div class="container">
                             <h4>{{ game.name }}</h4>
+                            <p>{{ game.genre }}</p>
                             {% if game.featured %}
                                 <p>⭐ FEATURED ⭐</p>
                             {% endif %}
