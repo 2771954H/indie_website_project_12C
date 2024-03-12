@@ -2,6 +2,10 @@ h1{
     font-size: 40px;
 }
 
+p{
+    font-size: small;
+}
+
 body {
     margin: 50px;
     background-color:antiquewhite;
@@ -47,12 +51,11 @@ body {
 }
 
 .tabs__content{
-    padding-bottom: 200px;
     order: 1;
     width: 100%;
     border-top: 3px solid lightgray;
     border-bottom: 3px solid lightgray;
-    line-height: 1.5;
+    /* line-height: 1.5; */
     font-size: 0.9em;
     display: none;
 }
@@ -93,12 +96,16 @@ body {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 25%;
+    width: 21%;
+    margin: 1%;
     float: left;
   }
 
   .card_image {
     width:100%;
+    height:200px;
+    object-fit: cover;
+    overflow: hidden;
   }
   
   /* On mouse-over, add a deeper shadow */

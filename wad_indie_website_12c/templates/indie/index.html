@@ -27,7 +27,7 @@
                     {% for game in games %}
                     <div class="card">
                         {% if game.image %}
-                            <img class = "card_image" src="{{ game.image }}" alt="{{ game.name }}">
+                            <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
                         {% else %}
                             <img class = "card_image" src="{% static 'no_image.jpg' %}" alt="{{ game.name }}">
                         {% endif %}

@@ -37,7 +37,7 @@ class Game(models.Model):
     MAX_DESC_LENGTH = 9999
     name = models.CharField(max_length=128, unique=True)
     description = models.CharField(max_length=MAX_DESC_LENGTH, blank=True, null=True)
-    image = models.ImageField(blank=True, null=True)
+    image = models.ImageField(upload_to="game_images", blank=True, null=True)
     price = models.FloatField(default=0)
 
     def price_formatted(self):
