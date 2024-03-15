@@ -13,37 +13,24 @@ from enum import Enum
 
 
 def populate():
-
-    class Genres(Enum):
-        FARMING_SIMULATOR = 1
-        PLATFORMER = 2
-        ACTION_ADVENTURE = 3
-        SURVIVAL_HORROR = 4
-        RPG = 5
-        FPS = 6
-        RACING = 7
-        FISHING_HORROR_SIMULATOR = 8
-        HOLLOW_LIKE = 9
-
-        def __str__(self):
-            return self.name
+    GENRE_CHOICES = ["Action", "Adventure", "Platformer", "Puzzle", "RPG"]
 
     steve_games = [
         {
             "name": "Jumper of Planet S",
             "price": 30,
-            "genre": Genres.FARMING_SIMULATOR,
+            "genre": "Action",
         },
         {
             "name": "Empty Sir for Dummies",
             "price": 15,
-            "genre": Genres.HOLLOW_LIKE,
+            "genre": "RPG",
             "description": "dummy text",
         },
         {
             "name": "Crush those Pistachio Shells",
             "price": 150,
-            "genre": Genres.FISHING_HORROR_SIMULATOR,
+            "genre": "Puzzle",
             "description": "Rip-off Candy Crush",
             "featured": True,
         },
@@ -53,14 +40,14 @@ def populate():
         {
             "name": "Destroyer of only one acre of land",
             "price": 0.5,
-            "genre": Genres.ACTION_ADVENTURE,
+            "genre": "Adventure",
             "description": "its really not that big of a deal",
             "featured": True,
         },
         {
             "name": "Destroyer of only one acre of land 2",
             "price": 1,
-            "genre": Genres.RACING,
+            "genre": "Adventure",
             "description": "its still not really that big of a deal",
         },
     ]
@@ -92,7 +79,7 @@ def populate():
         },
     ]
 
-    for genre in list(Genres):
+    for genre in GENRE_CHOICES:
         genre = add_genre(genre)
 
     for dev, games in devs.items():
