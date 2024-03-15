@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from indie.models import Genre, Game, Feedback, UserProfile
+from datetime import date
 
 
 class GenreForm(forms.ModelForm):
@@ -27,6 +28,7 @@ class GameForm(forms.ModelForm):
     likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     downloads = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    upload_date = forms.DateField(widget=forms.HiddenInput(), initial=date.today())
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     genre = forms.ModelChoiceField(queryset= Genre.objects, required=False, help_text="Please enter the genre your game is")

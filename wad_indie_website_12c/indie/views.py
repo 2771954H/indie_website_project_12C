@@ -57,7 +57,7 @@ def upload_game(request):
         
         if form.is_valid():
             form.save(commit=True)            
-            return redirect('indie/dev_home.html')
+            return redirect("indie/dev_home.html")
         
         else:
             print(form.errors)
