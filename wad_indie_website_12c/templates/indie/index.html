@@ -1,12 +1,17 @@
 <!DOCTYPE html>
+{% extends 'indie/base.html' %}
 {% load staticfiles %}
 {% load indie_template_tags %}
 
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="{% static 'css_sheets/index.css' %}">
+        {% block title_block %}
+                Homepage
+            {% endblock %}
     </head>
     <body>
+        {% block body_block %}
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <img src="{% static 'images/logo.jpg' %}" alt="Indie Logo" style="height:100px"/>
             <h1 style="flex-grow: 1; text-align: center; margin-left: 20px;">Browse</h1>
@@ -52,31 +57,26 @@
         </div>
         <h2>
             <div class="tabs-genre">
-                <!--tab for FEATURED games-->
                 <input type="radio" class="gtabs__radio" name="tabs-genre" id="action" checked>
                 <label for="action" class="gtabs__label">Action</label>
                 <div class="gtabs__content">
                     Content for Action Games
                 </div>
-                <!--tab for POPULAR games-->
                 <input type="radio" class="gtabs__radio" name="tabs-genre" id="adv">
                 <label for="adv" class="gtabs__label">Adventure</label>
                 <div class="gtabs__content">
                     Content for Adventure Games
                 </div>
-                <!--tab for NEW games-->
                 <input type="radio" class="gtabs__radio" name="tabs-genre" id="plat">
                 <label for="plat" class="gtabs__label">Platformer</label>
                 <div class="gtabs__content">
                     Content for Platformer Games
                 </div>
-                <!--tab for TOP RATED games-->
                 <input type="radio" class="gtabs__radio" name="tabs-genre" id="puzzle">
                 <label for="puzzle" class="gtabs__label">Puzzle</label>
                 <div class="gtabs__content">
                     Content for Puzzle Games
                 </div>
-                <!--tab for TOP RATED games-->
                 <input type="radio" class="gtabs__radio" name="tabs-genre" id="rpg">
                 <label for="rpg" class="gtabs__label">RPG</label>
                 <div class="gtabs__content">
@@ -84,10 +84,6 @@
                 </div>
             </div>
         </h2>
+        {% endblock %}
     </body>
-
-
-    {% block  title_block %}
-        <a href="{% url 'indie:dev_home' %}">Dev Home</a>
-    {% endblock %}
 </html>
