@@ -23,12 +23,6 @@
             
         <div>
             <ul>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'indie:logout' %}">Logout</a></li>
-                {% else %}
-                    <li><a href="{% url 'indie:register' %}">Sign Up</a></li>
-                    <li><a href="{% url 'indie:login' %}">Login</a></li>
-                {% endif %}
                     <li><a href="{% url 'indie:index' %}">Index</a></li>
                 </ul>
         </div>        
