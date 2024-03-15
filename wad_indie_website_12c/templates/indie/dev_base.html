@@ -17,10 +17,12 @@
         <div>
             {% block top_bar_block %}
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h1><img src="{% static 'images/logo.jpeg' %}" alt="Indie Logo" /></h1>
+                <h1><img src="{% static 'images/logo.jpg' %}" alt="Indie Logo" 
+                         width = "200"
+                         height = "200"/></h1>
                 <h1 style="flex-grow: 1; text-align: center; margin-left: 20px;">Browse</h1>
                 <h1>
-                    <a href="{% url 'indie:upload_new_game' %}">Upload New Game</a>
+                    <a href="{% url 'indie:upload_game' %}">Upload Game</a>
                 </h1>
                 <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:logout' %}">Logout</a></h1>
         </div>

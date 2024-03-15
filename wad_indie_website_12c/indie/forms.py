@@ -22,21 +22,21 @@ class GameForm(forms.ModelForm):
         help_text="Please enter the game name.",
         required=True,
     )
-    price = forms.FloatField(initial=0, required=True)
+    price = forms.FloatField(initial=0, required=True, help_text="Please enter the price you want your game to be")
 
     likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     downloads = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
-    genre = forms.InlineForeignKeyField(required=False)
+    genre = forms.ModelChoiceField(queryset= Genre.objects, required=False, help_text="Please enter the genre your game is")
 
     class Meta:
         model = Game
-        fields = ("name", "price", "genre")
+        fields = ("name", "price", "genre",)
 
 
-class FeedbackForm(forms.ModelForm):
+"""class FeedbackForm(forms.ModelForm):
     text = forms.CharField(
         max_length=Feedback.MAX_INPUT_LENGTH,
         help_text="Please enter your feedback.",
@@ -50,7 +50,7 @@ class FeedbackForm(forms.ModelForm):
 
     class Meta:
         model = Feedback
-        fields = ("text", "rating", "user", "game")
+        fields = ("text", "rating", "user", "game")"""
 
 
 class UserForm(forms.ModelForm):
