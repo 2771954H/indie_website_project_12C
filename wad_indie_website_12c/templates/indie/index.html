@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load indie_template_tags %}
 
 <html>
     <head>
@@ -24,121 +25,25 @@
                 <input type="radio" class="tabs__radio" name="tabs-poprecent" id="featured" checked>
                 <label for="featured" class="tabs__label">Featured</label>
                 <div class="tabs__content">
-                    {% for game in featured_games %}
-                    <div class="card">
-                        <a href="{% url 'indie:show_game' game.slug %}">
-                        {% if game.image %}
-                            <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
-                        {% else %}
-                            <img class = "card_image" src="{% static 'images/no_image.jpg' %}" alt="{{ game.name }}">
-                        {% endif %}
-                        <div class="container">
-                            <h4>{{ game.name }}</h4>
-                            <p>{{ game.dev }}</p>
-                            <p>{{ game.genre }}</p>
-                            {% if game.featured %}
-                            <p>⭐ FEATURED ⭐</p>
-                            {% endif %}
-                            {% if game.description %}
-                            <p>{{ game.description }}</p>
-                            {% endif %}
-                            <p>{{ game.likes }} ❤️, {{ game.views }} 👁️, {{ game.downloads }} ⬇️</p>
-                            <p>{{ game.upload_date|date:"SHORT_DATE_FORMAT" }}</p>
-                            <h4>{{ game.price_formatted }}</h4>
-                        </div>
-                    </a>
-                    </div>
-                    {% endfor %}
+                    {% get_games_list featured_games %}
                 </div>
                 <!--tab for POPULAR games-->
                 <input type="radio" class="tabs__radio" name="tabs-poprecent" id="popular">
                 <label for="popular" class="tabs__label">Popular</label>
                 <div class="tabs__content">
-                    {% for game in popular_games %}
-                    <div class="card">
-                        <a href="{% url 'indie:show_game' game.slug %}">
-                            {% if game.image %}
-                            <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
-                        {% else %}
-                            <img class = "card_image" src="{% static 'images/no_image.jpg' %}" alt="{{ game.name }}">
-                        {% endif %}
-                        <div class="container">
-                            <h4>{{ game.name }}</h4>
-                            <p>{{ game.dev }}</p>
-                            <p>{{ game.genre }}</p>
-                            {% if game.featured %}
-                                <p>⭐ FEATURED ⭐</p>
-                            {% endif %}
-                            {% if game.description %}
-                                <p>{{ game.description }}</p>
-                            {% endif %}
-                            <p>{{ game.likes }} ❤️, {{ game.views }} 👁️, {{ game.downloads }} ⬇️</p>
-                            <p>{{ game.upload_date|date:"SHORT_DATE_FORMAT" }}</p>
-                            <h4>{{ game.price_formatted }}</h4>
-                        </div>
-                    </a>
-                </div>
-                    {% endfor %}
+                    {% get_games_list popular_games %}
                 </div>
                 <!--tab for NEW games-->
                 <input type="radio" class="tabs__radio" name="tabs-poprecent" id="new">
                 <label for="new" class="tabs__label">New</label>
                 <div class="tabs__content">
-                    {% for game in new_games %}
-                    <div class="card">
-                        <a href="{% url 'indie:show_game' game.slug %}">
-                            {% if game.image %}
-                            <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
-                        {% else %}
-                            <img class = "card_image" src="{% static 'images/no_image.jpg' %}" alt="{{ game.name }}">
-                        {% endif %}
-                        <div class="container">
-                            <h4>{{ game.name }}</h4>
-                            <p>{{ game.dev }}</p>
-                            <p>{{ game.genre }}</p>
-                            {% if game.featured %}
-                                <p>⭐ FEATURED ⭐</p>
-                            {% endif %}
-                            {% if game.description %}
-                                <p>{{ game.description }}</p>
-                            {% endif %}
-                            <p>{{ game.likes }} ❤️, {{ game.views }} 👁️, {{ game.downloads }} ⬇️</p>
-                            <p>{{ game.upload_date|date:"SHORT_DATE_FORMAT" }}</p>
-                            <h4>{{ game.price_formatted }}</h4>
-                        </div>
-                    </a>
-                </div>
-                    {% endfor %}
+                    {% get_games_list new_games %}
                 </div>
                 <!--tab for TOP RATED games-->
                 <input type="radio" class="tabs__radio" name="tabs-poprecent" id="top">
                 <label for="top" class="tabs__label">Top Rated</label>
                 <div class="tabs__content">
-                    {% for game in top_games %}
-                    <div class="card">
-                        <a href="{% url 'indie:show_game' game.slug %}">
-                            {% if game.image %}
-                            <img class = "card_image" src="{{ game.image.url }}" alt="{{ game.name }}">
-                        {% else %}
-                            <img class = "card_image" src="{% static 'images/no_image.jpg' %}" alt="{{ game.name }}">
-                        {% endif %}
-                        <div class="container">
-                            <h4>{{ game.name }}</h4>
-                            <p>{{ game.dev }}</p>
-                            <p>{{ game.genre }}</p>
-                            {% if game.featured %}
-                                <p>⭐ FEATURED ⭐</p>
-                            {% endif %}
-                            {% if game.description %}
-                                <p>{{ game.description }}</p>
-                            {% endif %}
-                            <p>{{ game.likes }} ❤️, {{ game.views }} 👁️, {{ game.downloads }} ⬇️</p>
-                            <p>{{ game.upload_date|date:"SHORT_DATE_FORMAT" }}</p>
-                            <h4>{{ game.price_formatted }}</h4>
-                        </div>
-                    </a>
-                </div>
-                    {% endfor %}
+                    {% get_games_list top_games %}
                 </div>
             </div>
         </h2>
