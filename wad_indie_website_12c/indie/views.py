@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.urls import reverse
 from django.http import HttpResponse
 
-from indie.models import Game
+from indie.models import Game, User, UserProfile
 from indie.forms import GameForm, UserForm, UserProfileForm
 
 
@@ -68,12 +70,35 @@ def register(request):
     context_dict['profile_form'] = profile_form
     context_dict['registered'] = registered
     
-    return render(request, 'indie/register.html',
-                  context=context_dict
-                  )
+    return render(request, 'indie/register.html', context=context_dict)
+
+def user_login(request):
+    context_dict = {'pagename' : 'Login'}
+    
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         
-
-
+        user = authenticate(username = username, password = password)
+        profile = UserProfile.objects.get(user = user)
+        
+        if user:
+            if user.is_active:
+                login(request, user)
+                if profile.is_dev:
+                    return redirect(reverse('indie:dev_home'))
+                else:
+                    return redirect(reverse('indie:index'))
+            else:
+                return HttpResponse('Your Indie account is disabled.')
+        else:
+            print(f"Invalid login details.")
+            return HttpResponse("Invalid login details supplied.")
+    
+    else:
+        return render(request, 'indie/login.html', context=context_dict)
+                
+        
 def logout(request):
     return index(request)
 

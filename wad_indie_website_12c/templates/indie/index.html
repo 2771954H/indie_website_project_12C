@@ -12,20 +12,6 @@
     </head>
     <body>
         {% block body_block %}
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <a href="http://127.0.0.1:8000/indie">
-                <img src="{% static 'images/logo.jpg' %}" alt="Indie Logo" style="border-radius: 8px; height:100px"/>
-            </a>
-            <h1 style="flex-grow: 1; text-align: center; margin-left: 20px;">Browse</h1>
-            <h1>
-                <form>
-                    <label for="sitem">Search:</label>
-                    <input type="text" id="sitem" name="sitem" placeholder="Enter Game/Developer">
-                </form>
-            </h1>
-            <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:logout' %}">Logout</a></h1>
-        </div>
-
         <h2>
             <div class="tabs">
                 <!--tab for FEATURED games-->
@@ -89,8 +75,4 @@
         {% endblock %}
     </body>
 
-
-    {% block  title_block %}
-    <li><a href="{% url 'indie:register' %}">Register</a></li>
-    {% endblock %}
 </html>
