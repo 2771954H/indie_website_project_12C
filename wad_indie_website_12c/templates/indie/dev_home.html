@@ -1,11 +1,54 @@
-{% extends "indie/dev_base.html" %}
+{% extends "indie/game_base.html" %}
 {% load staticfiles %}
 
-{% block title_block %}
-    Dev Home
-{% endblock %}
-
 {% block body_block %}
-    <li>Testing things</li>
-
+    <div style="display: flex; justify-content: flex-start;">
+        <img src="{% static 'images/no_image.jpg' %}"  class="gameImage" alt="Game Snapshot"/>
+        <div style="padding-left: 40px;">
+            <h1>
+                Description
+            </h1>
+            <h2 class="gameDescription">
+                Game Description: Up to ~600characters
+            </h2>
+            <div style="text-align: center; border: 2px solid cadetblue; display:flex; justify-content:space-around;">
+                <h1 style="border-right:2px solid cadetblue; padding-right: 120px;">
+                    Purchase
+                </h1>
+                <h1 style="font-family: sans-serif; padding-right: 20px;">
+                    <!-- **needs replacement** replaces with actual price of game-->
+                    $25
+                </h1>
+            </div>
+        </div>
+        <div style="padding-left: 40px;">
+            <div style="border-style: groove; width: 300px; height: 625px;">
+                <div style="padding-left: 50px;">
+                    <!-- **needs replacement** replaces with actual dev pfp-->
+                    <img src="{% static 'images/no_image.jpg' %}"  class="devPfp" alt="Dev Pfp"/>
+                </div>
+                <div style="padding-left: 50px; text-align: center; width: 200px; height: 100px;">
+                    <h1 style="word-wrap: break-word;">
+                        <!-- **needs replacement** replace developer name, 20char max-->
+                        Steve Dev
+                    </h1>
+                    <div style="width: 300px; text-align: left; margin-left: -12px;"><h1>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div></h1>
+                </div>
+                <div style=" padding-top: 60px; border-bottom: 2px solid cadetblue;">
+                </div>
+                <div>
+                   <h2  style="text-align: center; word-wrap: break-word; font-family: sans-serif;">
+                    <!-- **needs replacement** replace developer intro, 200char max-->
+                    Dev Introduction: Up to 200 characters
+                   </h2>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

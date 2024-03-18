@@ -1,0 +1,53 @@
+h1{
+    font-size: 40px;
+}
+
+p{
+    font-size: small;
+}
+
+body {
+    margin: 50px;
+    background-color:antiquewhite;
+}
+
+.resultContainer {
+    display: flex;
+}
+
+.wrapper {
+    display: flex;
+    align-self: center;
+}
+  
+.gameTitle{
+    margin-left: 20px;
+}
+
+.gameCat{
+    margin-left: 20px;
+}
+
+.gameImage{
+    margin-top: 40px;
+    border-radius: 8px;
+    width: 700px;
+    height: 500px;
+}
+
+.gameDescription{
+    border-style: groove;
+    font-family: sans-serif;
+    word-wrap: break-word;
+    width: 700px;
+    height: 340px;
+}
+
+.devPfp{
+    width: 200px;
+    clip-path: circle();
+}
+
+.checked {
+    color: orange;
+  }
