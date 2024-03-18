@@ -1,0 +1,25 @@
+{% extends 'indie/dev_base.html'%}
+{% load staticfiles %}
+
+{% block body_block %}
+
+<h1>Register for Indie</h1>
+{% if registered %}
+<strong>Thank you for registering!</strong><br />
+    {% if profile.is_dev %}
+    <a href="{% url 'indie:dev_home' %}">Go to Dev Home Page.</a><br />
+    {% else %}
+    <a href="{% url 'indie:index' %}">Go to Home Page.</a><br />
+    {% endif %}
+{% else %}
+    <form id="user_form" method="post" action="{% url 'indie:register' %}"
+    enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    <input type="submit" name="submit" value="Register" />
+    </form>
+{% endif %}
+
+{% endblock %}

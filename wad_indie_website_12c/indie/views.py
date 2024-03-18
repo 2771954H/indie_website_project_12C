@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from indie.models import Game
-from indie.forms import GameForm
+from indie.forms import GameForm, UserForm, UserProfileForm
 
 
 def index(request):
@@ -33,6 +33,46 @@ def show_game(request, game_name_slug):
 
     return render(request, "indie/game_page.html", context=context_dict)
 
+def register(request):
+    registered = False
+    context_dict = {'pagename': 'Register'}
+    
+    if request.method == "POST":
+        user_form = UserForm(request.POST)
+        profile_form = UserProfileForm(request.POST)
+        
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+            
+            profile = profile_form.save(commit=False)
+            profile.user=user
+            
+            profile.save()
+            
+            registered = True
+            context_dict['user'] = user
+            context_dict['profile'] = profile
+            
+    
+        else:
+            print(user_form.errors, profile_form.errors)
+            
+    else:
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+        
+    context_dict['pagename'] = 'Register'
+    context_dict['user_form'] = user_form
+    context_dict['profile_form'] = profile_form
+    context_dict['registered'] = registered
+    
+    return render(request, 'indie/register.html',
+                  context=context_dict
+                  )
+        
+
 
 def logout(request):
     return index(request)
@@ -62,4 +102,4 @@ def upload_game(request):
         else:
             print(form.errors)
     
-    return render(request, "indie/upload_game.html", {'form' : form})
+    return render(request, "indie/upload_game.html", {'form' : form}, context=context_dict)
