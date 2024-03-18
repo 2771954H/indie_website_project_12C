@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css_sheets/game_page.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+        <title> 
+            {% block title_block %}
+                Dev Base
+            {% endblock %}
+
+        </title>
+
+    <body>
+        <div>
+            {% block top_bar_block %}
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <a href="http://127.0.0.1:8000/indie">
+                    <img src="{% static 'images/logo.jpg' %}" alt="Indie Logo" style="height:100px; border-radius: 8px;"/>
+                </a>
+
+                <div class="resultContainer">
+                    <div class="wrapper">
+                        <span class="gameTitle">
+                        <!--actual game title-->
+                            {% if game %}
+                            <h1>{{ game.name }}<br/></h1>
+                            {% else %}
+                            <h1>Unknown Game<br/></h1>
+                            {% endif %}
+                            <span class="gameCat">
+                        <!-- **needs replacement** replace for actual game category-->
+                                <u>Game Category</u>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="gameTitle"></div>
+                </div>
+                <h1 style="flex-grow: 1; text-align: right; margin-left: 60px;">
+                    <form>
+                        <label for="sitem">Search:</label>
+                        <input type="text" id="sitem" name="sitem" placeholder="Enter Game/Developer">
+                    </form>
+                </h1>
+                <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:logout' %}">Logout</a></h1>
+            </div>
+            {% endblock %}
+        </div>
+
+        <div>
+            {% block body_block %}
+            {% endblock %}
+        </div>
+
+        <div>
+            {% block bottom_bar_block %}
+            {% endblock %}
+        </div>
+</html>

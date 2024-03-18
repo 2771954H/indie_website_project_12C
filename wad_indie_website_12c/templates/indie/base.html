@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load indie_template_tags %} 
+
+<html>
+    <head>
+        <head>
+            <link rel="stylesheet" type="text/css" href="{% static 'css_sheets/index.css' %}">
+        </head>
+        <title>
+            Indie - 
+            {% block title_block %}
+            Base
+            {% endblock %}
+        </title>
+    </head>
+    
+    <body>
+        <div>
+        {% block body_block %}
+        {% endblock %}
+        </div>
+            
+        <div>
+            <ul>
+                    <li><a href="{% url 'indie:index' %}">Index</a></li>
+                </ul>
+        </div>        
+    </body>
+</html>

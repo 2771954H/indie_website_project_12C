@@ -6,7 +6,16 @@ from django.utils.timezone import now
 
 class Genre(models.Model):
     NAME_MAX_LENGTH = 128
-    name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
+    GENRE_CHOICES = [
+        ("Action", "Action"),
+        ("Adventure", "Adventure"),
+        ("Platformer", "Platformer"),
+        ("Puzzle", "Puzzle"),
+        ("RPG", "RPG"),
+    ]
+    name = models.CharField(
+        max_length=NAME_MAX_LENGTH, unique=True, choices=GENRE_CHOICES
+    )
     slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
