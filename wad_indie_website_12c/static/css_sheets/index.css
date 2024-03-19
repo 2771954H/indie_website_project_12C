@@ -1,14 +1,17 @@
 h1{
     font-size: 40px;
+    font-family: sans-serif;
 }
 
 p{
     font-size: small;
+    font-family: sans-serif;
 }
 
 body {
     margin: 50px;
     background-color:antiquewhite;
+    font-family: sans-serif;
 }
 
 .tabs{
@@ -117,3 +120,8 @@ body {
   .container {
     padding: 2px 16px;
   }
+
+  .devPfp{
+    width: 200px;
+    clip-path: circle();
+}

@@ -23,9 +23,9 @@
             </a>
             <h1 style="flex-grow: 1; text-align: center; margin-left: 20px;">Browse</h1>
             <h1>
-                <form>
+                <form action="{% url 'indie:search' %}" method="get">
                     <label for="sitem">Search:</label>
-                    <input type="text" id="sitem" name="sitem" placeholder="Enter Game/Developer">
+                    <input type="text" name="searchtext" placeholder="Enter Game/Developer" >
                 </form>
             </h1>
             <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:logout' %}">Logout</a></h1>

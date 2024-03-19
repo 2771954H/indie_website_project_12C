@@ -1,0 +1,20 @@
+{% load staticfiles %}
+
+{% if devs %}
+    {% for dev in devs %}
+    <div class="card">
+        <a href="{% url 'indie:show_user' dev.username %}">
+        {% if dev.picture %}
+            <img class = "devPfp" src="{{ dev.picture.url }}" alt="{{ dev }}">
+        {% else %}
+            <img class = "devPfp" src="{% static 'images/no_image.jpg' %}" alt="{{ dev }}">
+        {% endif %}
+        <div class="container">
+            <h4>{{ dev }}</h4>
+        </div>
+    </a>
+    </div>
+    {% endfor %}
+{% else %}
+    <li><strong>There are no devs in this category.</strong></li>
+{% endif %}

@@ -1,0 +1,32 @@
+{% extends 'indie/base.html' %}
+{% load staticfiles %}
+{% load indie_template_tags %}
+
+<html>
+    <head>
+        {% block title_block %}
+                Search: {{query}}
+            {% endblock %}
+    </head>
+    <body>
+        {% block body_block %}
+        <h2 style="text-align: left;">Search results - {{query}}</h2>
+        <h2>
+            <div class="tabs">
+                <input type="radio" class="tabs__radio" name="tabs-poprecent" id="games" checked>
+                <label for="games" class="tabs__label">Games</label>
+                <div class="tabs__content">
+                    {% get_games_list games %}
+                </div>
+                <input type="radio" class="tabs__radio" name="tabs-poprecent" id="devs">
+                <label for="devs" class="tabs__label">Devs</label>
+                <div class="tabs__content">
+                    {% get_devs_list devs %}
+                </div>
+            </div>
+        </h2>
+    </div>
+        {% endblock %}
+    </body>
+
+</html>
