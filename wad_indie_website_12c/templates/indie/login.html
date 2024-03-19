@@ -2,6 +2,9 @@
 {% load staticfiles %}
 
 {% block body_block %}
+{% if error %}
+    {{error}}
+{% endif %}
 <br />
 <form id="login_form" method = "post" action = "{% url 'indie:login' %}">
     {% csrf_token %}

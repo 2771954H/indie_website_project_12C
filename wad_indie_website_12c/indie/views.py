@@ -108,9 +108,14 @@ def user_login(request):
         password = request.POST.get("password")
 
         user = authenticate(username=username, password=password)
-        profile = UserProfile.objects.get(user=user)
 
         if user:
+            try:
+                profile = UserProfile.objects.get(user=user)
+            except:
+                # superusers you create via the command line won't have profiles asscociated with them
+                # probably won't need this as users will create their accounts via the form
+                profile = UserProfile.objects.create(user=user)
             if user.is_active:
                 login(request, user)
                 if profile.is_dev:
@@ -118,13 +123,10 @@ def user_login(request):
                 else:
                     return redirect(reverse("indie:index"))
             else:
-                return HttpResponse("Your Indie account is disabled.")
+                context_dict["error"] = "Your Indie account is disabled."
         else:
-            print(f"Invalid login details.")
-            return HttpResponse("Invalid login details supplied.")
-
-    else:
-        return render(request, "indie/login.html", context=context_dict)
+            context_dict["error"] = "Invalid login details."
+    return render(request, "indie/login.html", context=context_dict)
 
 
 def logout(request):
