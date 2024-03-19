@@ -25,7 +25,11 @@ class FeedbackAdmin(admin.ModelAdmin):
     list_display = ["game", "userProfile", "rating", "text"]
 
 
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ["user", "is_dev", "bio", "paypal_address", "fav_genre"]
+
+
 admin.site.register(Genre, GenreAdmin)
 admin.site.register(Game, GameAdmin)
 admin.site.register(Feedback, FeedbackAdmin)
-admin.site.register(UserProfile)
+admin.site.register(UserProfile, UserProfileAdmin)

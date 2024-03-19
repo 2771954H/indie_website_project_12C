@@ -11,8 +11,14 @@
         {% endif %}
         <div class="container">
             <h4>{{ dev }}</h4>
+        </a>
+        {% if dev.userprofile.bio %}
+            <p>{{ dev.userprofile.bio }}</p>
+        {% endif %}
+        {% if dev.userprofile.fav_genre %}
+            <p>Favourite genre: {{ dev.userprofile.fav_genre }}</p>
+        {% endif %}
         </div>
-    </a>
     </div>
     {% endfor %}
 {% else %}
