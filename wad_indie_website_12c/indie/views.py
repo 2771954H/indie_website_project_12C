@@ -88,6 +88,7 @@ def register(request):
             registered = True
             context_dict["user"] = user
             context_dict["profile"] = profile
+            login(request, user)
 
         else:
             print(user_form.errors, profile_form.errors)
