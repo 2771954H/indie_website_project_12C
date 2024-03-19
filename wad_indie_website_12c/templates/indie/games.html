@@ -11,7 +11,7 @@
         {% endif %}
         <div class="container">
             <h4>{{ game.name }}</h4>
-            <p>{{ game.dev }}</p>
+            <p><a href="{% url 'indie:show_user' game.dev.user.username %}">{{ game.dev }}</a></p>
             <p>{{ game.genre }}</p>
             {% if game.featured %}
             <p>⭐ FEATURED ⭐</p>

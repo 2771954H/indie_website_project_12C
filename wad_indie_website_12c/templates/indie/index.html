@@ -1,11 +1,9 @@
-<!DOCTYPE html>
 {% extends 'indie/base.html' %}
 {% load staticfiles %}
 {% load indie_template_tags %}
 
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="{% static 'css_sheets/index.css' %}">
         {% block title_block %}
                 Homepage
             {% endblock %}
@@ -48,27 +46,27 @@
                 <input type="radio" class="gtabs__radio" name="tabs-genre" id="action" checked>
                 <label for="action" class="gtabs__label">Action</label>
                 <div class="gtabs__content">
-                    Content for Action Games
+                    {% get_games_list action_games %}
                 </div>
                 <input type="radio" class="gtabs__radio" name="tabs-genre" id="adv">
                 <label for="adv" class="gtabs__label">Adventure</label>
                 <div class="gtabs__content">
-                    Content for Adventure Games
+                    {% get_games_list adventure_games %}
                 </div>
                 <input type="radio" class="gtabs__radio" name="tabs-genre" id="plat">
                 <label for="plat" class="gtabs__label">Platformer</label>
                 <div class="gtabs__content">
-                    Content for Platformer Games
+                    {% get_games_list platformer_games %}
                 </div>
                 <input type="radio" class="gtabs__radio" name="tabs-genre" id="puzzle">
                 <label for="puzzle" class="gtabs__label">Puzzle</label>
                 <div class="gtabs__content">
-                    Content for Puzzle Games
+                    {% get_games_list puzzle_games %}
                 </div>
                 <input type="radio" class="gtabs__radio" name="tabs-genre" id="rpg">
                 <label for="rpg" class="gtabs__label">RPG</label>
                 <div class="gtabs__content">
-                    Content for RPG Games
+                    {% get_games_list rpg_games %}
                 </div>
             </div>
         </h2>

@@ -23,15 +23,21 @@
             </a>
             <h1 style="flex-grow: 1; text-align: center; margin-left: 20px;">Browse</h1>
             <h1>
-                <form>
+                <form action="{% url 'indie:search' %}" method="get">
                     <label for="sitem">Search:</label>
-                    <input type="text" id="sitem" name="sitem" placeholder="Enter Game/Developer">
+                    <input type="text" name="searchtext" placeholder="Enter Game/Developer" >
                 </form>
             </h1>
             {% if user.is_authenticated %}
-                <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:logout' %}">Logout</a></h1>
+                <h3 style="width: 15%; margin: 0; text-align: right">Logged in as {{user.username}}</h3>
+                {% if user.userprofile.picture %}
+                    <img class = "userPfp" src="{{ user.userprofile.picture.url }}" alt="{{ user.username }}">
+                {% else %}
+                    <img class = "userPfp" src="{% static 'images/no_image.jpg' %}" alt="{{ user.username }}">
+                {% endif %}
+                <h1 style="width: 15%; margin: 0; text-align: right"><a href="{% url 'indie:logout' %}">Logout</a></h1>
             {% else %}
-                <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:login' %}">Login</a>
+            <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:login' %}">Login / Register</a></h1>
             {% endif %}
         </div>
         

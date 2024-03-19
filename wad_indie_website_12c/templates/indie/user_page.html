@@ -1,0 +1,22 @@
+{% extends "indie/base.html" %}
+{% load staticfiles %}
+
+<head>
+    {% block title_block %}
+            {{user.user.username}}
+        {% endblock %}
+</head>
+
+{% block body_block %}
+    <h1>{{username}}</h1>
+    {% if user %}
+        {% if user.picture %}
+                <img class = "devPfp" src="{{ user.picture.url }}" alt="{{ dev }}">
+        {% else %}
+            <img class = "devPfp" src="{% static 'images/no_image.jpg' %}" alt="{{ dev }}">
+        {% endif %}
+        <p>Bio: {{user.bio}}</p>
+    {% else %}
+        <p>User with this name does not exist.</p>
+    {% endif %}
+{% endblock %}

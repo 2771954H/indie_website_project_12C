@@ -52,14 +52,18 @@ def populate():
         },
     ]
 
-    devs = {"Steve Dev Guy": steve_games, "IndieSpindie123": spindie_games}
+    devs = {
+        "SteveDevGuy": steve_games,
+        "IndieSpindie123": spindie_games,
+        "PistachioCrusher": [],
+    }
 
     feedbacks = [
         {
             "game": spindie_games[0].get("name"),
             "feedback": """I really loovveed this game, getting to destroy something and it not 
                         being a big deal is a really big deal in todays gaming landscape haha""",
-            "user": "Bill Big Guy",
+            "user": "BillBigGuy",
             "rating": 10,
         },
         {
@@ -68,7 +72,7 @@ def populate():
                         It restored my self perception as I played with ease and satisfied 
                         my endless seek for approval and sucess. I will tell my therapist 
                         how helpful this was. It may replace my antidepressants. """,
-            "user": "Petit Pois!",
+            "user": "PetitPois",
             "rating": 3,
         },
         {

@@ -1,14 +1,17 @@
 h1{
     font-size: 40px;
+    font-family: sans-serif;
 }
 
 p{
     font-size: small;
+    font-family: sans-serif;
 }
 
 body {
     margin: 50px;
     background-color:antiquewhite;
+    font-family: sans-serif;
 }
 
 .tabs{
@@ -92,6 +95,11 @@ body {
     display: initial;
 }
 
+.userPfp{
+    width: 100px;
+    clip-path: circle();
+}
+
 .card {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -117,3 +125,8 @@ body {
   .container {
     padding: 2px 16px;
   }
+
+  .devPfp{
+    width: 200px;
+    clip-path: circle();
+}

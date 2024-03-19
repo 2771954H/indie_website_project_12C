@@ -19,7 +19,10 @@
 {% endblock %}
 
 {% block body_block %}
-<br />
+<h1 >Login</h1>
+{% if error %}
+    {{error}}
+{% endif %}
 <form id="login_form" method = "post" action = "{% url 'indie:login' %}">
     {% csrf_token %}
     Username: <input type="text" name = "username" value="" size = "50" />
@@ -28,6 +31,8 @@
     <br />
     <input type="submit" value = "submit"/>
 </form>
+<h2>Don't have an account yet?</h2>
+<h3><a href="{% url 'indie:register' %}">Register</a></h1>
 {% endblock %}
 {% block bottom_bar_block %}
     <br />
