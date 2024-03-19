@@ -31,7 +31,7 @@
             {% if user.is_authenticated %}
             <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:logout' %}">Logout</a></h1>
             {% else %}
-            <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:login' %}">Login</a></h1>
+            <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:login' %}">Login / Register</a></h1>
             {% endif %}
         </div>
         
