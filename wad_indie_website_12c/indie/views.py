@@ -66,7 +66,7 @@ def show_user(request, username):
 
 def register(request):
     registered = False
-    context_dict = {"pagename": "Register"}
+    context_dict = {}
 
     if request.method == "POST":
         user_form = UserForm(request.POST)
@@ -79,6 +79,9 @@ def register(request):
 
             profile = profile_form.save(commit=False)
             profile.user = user
+
+            if "picture" in request.FILES:
+                profile.picture = request.FILES["picture"]
 
             profile.save()
 
@@ -93,7 +96,6 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
 
-    context_dict["pagename"] = "Register"
     context_dict["user_form"] = user_form
     context_dict["profile_form"] = profile_form
     context_dict["registered"] = registered
@@ -102,7 +104,7 @@ def register(request):
 
 
 def user_login(request):
-    context_dict = {"pagename": "Login"}
+    context_dict = {}
 
     if request.method == "POST":
         username = request.POST.get("username")
@@ -139,14 +141,12 @@ def user_logout(request):
 # Dev pages
 def dev_home(request):
     context_dict = {}
-    context_dict["pagename"] = "Dev Home"
 
     return render(request, "indie/dev_home.html", context=context_dict)
 
 
 def upload_game(request):
     context_dict = {}
-    context_dict["pagename"] = "Upload Game"
 
     form = GameForm()
 

@@ -11,7 +11,7 @@
     <h1>{{username}}</h1>
     {% if user %}
         {% if user.picture %}
-                <img class = "devPfp" src="{{ dev.picture.url }}" alt="{{ dev }}">
+                <img class = "devPfp" src="{{ user.picture.url }}" alt="{{ dev }}">
         {% else %}
             <img class = "devPfp" src="{% static 'images/no_image.jpg' %}" alt="{{ dev }}">
         {% endif %}

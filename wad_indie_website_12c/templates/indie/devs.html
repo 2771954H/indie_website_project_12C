@@ -4,8 +4,8 @@
     {% for dev in devs %}
     <div class="card">
         <a href="{% url 'indie:show_user' dev.username %}">
-        {% if dev.picture %}
-            <img class = "devPfp" src="{{ dev.picture.url }}" alt="{{ dev }}">
+        {% if dev.userprofile.picture %}
+            <img class = "devPfp" src="{{ dev.userprofile.picture.url }}" alt="{{ dev }}">
         {% else %}
             <img class = "devPfp" src="{% static 'images/no_image.jpg' %}" alt="{{ dev }}">
         {% endif %}
