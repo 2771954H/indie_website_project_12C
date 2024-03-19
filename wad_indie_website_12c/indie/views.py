@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.http import HttpResponse
 
@@ -98,22 +99,28 @@ def user_login(request):
     else:
         return render(request, 'indie/login.html', context=context_dict)
                 
-        
-def logout(request):
-    return index(request)
+   
+@login_required 
+def user_logout(request):
+    logout(request)
+    return redirect(reverse('indie:index'))
 
 
 # Dev pages
+@login_required
 def dev_home(request):
     context_dict = {}
     context_dict["pagename"] = "Dev Home"
+    check_dev(request)
 
     return render(request, "indie/dev_home.html", context=context_dict)
 
 
+@login_required
 def upload_game(request):
     context_dict = {}
     context_dict["pagename"] = 'Upload Game'
+    check_dev(request)
     
     form = GameForm()
     
@@ -128,3 +135,10 @@ def upload_game(request):
             print(form.errors)
     
     return render(request, "indie/upload_game.html", {'form' : form}, context=context_dict)
+
+#Checks if the current logged in user is a dev- put in every dev page
+def check_dev(request):
+    profile = UserProfile.objects.get(user = request.user)
+    if profile.is_dev == False:
+        return index(request)    
+    

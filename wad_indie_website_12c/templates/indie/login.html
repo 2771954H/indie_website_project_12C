@@ -1,6 +1,23 @@
 {% extends 'indie/base.html'%}
 {% load staticfiles %}
 
+{% block top_bar_block %}
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <a href="http://127.0.0.1:8000/indie">
+        <img src="{% static 'images/logo.jpg' %}" alt="Indie Logo" style="border-radius: 8px; height:100px"/>
+    </a>
+    <h1 style="flex-grow: 1; text-align: center; margin-left: 20px;">Browse</h1>
+    <h1>
+        <form>
+            <label for="sitem">Search:</label>
+            <input type="text" id="sitem" name="sitem" placeholder="Enter Game/Developer">
+        </form>
+    </h1>
+    <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:index' %}">Home Page</a>
+</div>
+
+{% endblock %}
+
 {% block body_block %}
 <br />
 <form id="login_form" method = "post" action = "{% url 'indie:login' %}">
@@ -13,5 +30,10 @@
 </form>
 {% endblock %}
 {% block bottom_bar_block %}
+    <br />
+    <div>
+    Don't have an account? Register as a developer or user today!
+    <li><a href="{% url 'indie:register' %}">Register</a></li>
+    </div>
 {% endblock %}
     

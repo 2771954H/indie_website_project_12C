@@ -134,3 +134,5 @@ STATIC_URL = "/static/"
 
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = "/media/"
+
+LOGIN_URL = 'indie:login'

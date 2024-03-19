@@ -23,7 +23,12 @@
             </a>
             <h1 style="flex-grow: 1; text-align: center; margin-left: 20px;">Browse</h1>
             <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:upload_game' %}">Upload Game</a></h1>
+            
+            {% if user.is_authenticated %}
             <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:logout' %}">Logout</a></h1>
+            {% else %}
+                <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:login' %}">Login</a>
+            {% endif %}
         </div>
         
         {% endblock %}
