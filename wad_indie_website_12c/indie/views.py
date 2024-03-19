@@ -8,6 +8,7 @@ from django.http import HttpResponse
 
 from indie.models import Game, User, UserProfile
 from indie.forms import GameForm, UserForm, UserProfileForm
+from indie.helperpythonfunc import check_dev, get_current_profile
 
 
 def index(request):
@@ -184,10 +185,5 @@ def upload_game(request):
     context_dict['form']= form
     
     return render(request, "indie/upload_game.html", context=context_dict)
-
-#Checks if the current logged in user is a dev- put in every dev page
-def check_dev(request):
-    profile = UserProfile.objects.get(user = request.user)
-    if profile.is_dev == False:
-        return index(request)    
+  
     
