@@ -21,6 +21,18 @@ def index(request):
     context_dict["new_games"] = new_games_list
     context_dict["top_games"] = top_games_list
 
+    action_games = Game.objects.filter(genre__name="Action")[:4]
+    adventure_games = Game.objects.filter(genre__name="Adventure")[:4]
+    platformer_games = Game.objects.filter(genre__name="Platformer")[:4]
+    puzzle_games = Game.objects.filter(genre__name="Puzzle")[:4]
+    rpg_games = Game.objects.filter(genre__name="RPG")[:4]
+
+    context_dict["action_games"] = action_games
+    context_dict["adventure_games"] = adventure_games
+    context_dict["platformer_games"] = platformer_games
+    context_dict["puzzle_games"] = puzzle_games
+    context_dict["rpg_games"] = rpg_games
+
     return render(request, "indie/index.html", context=context_dict)
 
 
