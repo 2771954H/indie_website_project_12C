@@ -176,12 +176,14 @@ def upload_game(request):
 
         if form.is_valid():
             form.save(commit=True)
-            return redirect("indie/dev_home.html")
+            return redirect(reverse("indie:dev_home"))
 
         else:
             print(form.errors)
     
-    return render(request, "indie/upload_game.html", {'form' : form}, context=context_dict)
+    context_dict['form']= form
+    
+    return render(request, "indie/upload_game.html", context=context_dict)
 
 #Checks if the current logged in user is a dev- put in every dev page
 def check_dev(request):

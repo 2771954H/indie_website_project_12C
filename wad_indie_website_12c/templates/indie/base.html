@@ -31,10 +31,13 @@
             {% if user.is_authenticated %}
                 <h3 style="width: 15%; margin: 0; text-align: right">Logged in as {{user.username}}</h3>
                 {% if user.userprofile.picture %}
-                    <img class = "userPfp" src="{{ user.userprofile.picture.url }}" alt="{{ user.username }}">
+                    <img class = "userPfp" src="{{ user.userprofile.picture.url }}" alt="{{ user.username }}" 
+                    style="border-radius: 8px; height:100px">
                 {% else %}
-                    <img class = "userPfp" src="{% static 'images/no_image.jpg' %}" alt="{{ user.username }}">
+                    <img class = "userPfp" src="{% static 'images/no_image.jpg' %}" alt="{{ user.username }}"
+                    style="border-radius: 8px; height:100px">
                 {% endif %}
+                
                 <h1 style="width: 15%; margin: 0; text-align: right"><a href="{% url 'indie:logout' %}">Logout</a></h1>
             {% else %}
             <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:login' %}">Login / Register</a></h1>
@@ -48,7 +51,6 @@
         </div>
             
         {% block bottom_bar_block %}
-            <li><a href="{% url 'indie:register' %}">Register</a></li>
         {% endblock %}        
     </body>
 </html>
