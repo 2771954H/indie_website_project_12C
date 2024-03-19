@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.http import HttpResponse
 
@@ -129,8 +130,10 @@ def user_login(request):
     return render(request, "indie/login.html", context=context_dict)
 
 
-def logout(request):
-    return index(request)
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect(reverse("indie:index"))
 
 
 # Dev pages

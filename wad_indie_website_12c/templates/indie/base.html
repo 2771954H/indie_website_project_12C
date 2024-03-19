@@ -28,7 +28,11 @@
                     <input type="text" name="searchtext" placeholder="Enter Game/Developer" >
                 </form>
             </h1>
+            {% if user.is_authenticated %}
             <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:logout' %}">Logout</a></h1>
+            {% else %}
+            <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:login' %}">Login</a></h1>
+            {% endif %}
         </div>
         
         {% endblock %}
@@ -38,9 +42,6 @@
         </div>
             
         {% block bottom_bar_block %}
-            <li><a href="{% url 'indie:register' %}">Register</a></li>
-            <li><a href="{% url 'indie:login' %}">Login</a></li>
-
         {% endblock %}        
     </body>
 </html>
