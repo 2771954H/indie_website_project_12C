@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.http import HttpResponse
 
-from indie.models import Game, User, UserProfile
+from indie.models import Game, User, UserProfile, Genre
 from indie.forms import GameForm, UserForm, UserProfileForm
 from indie.helperpythonfunc import check_dev, get_current_profile
 
@@ -59,6 +59,7 @@ def show_game(request, game_name_slug):
     try:
         game = Game.objects.get(slug=game_name_slug)
         context_dict["game"] = game
+        context_dict["dev"] = game.dev
     except Game.DoesNotExist:
         context_dict["game"] = None
 

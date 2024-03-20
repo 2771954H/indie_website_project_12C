@@ -7,7 +7,7 @@ p{
 }
 
 body {
-    margin: 50px;
+    
     background-color:antiquewhite;
 }
 
@@ -22,6 +22,7 @@ body {
   
 .gameTitle{
     margin-left: 20px;
+    width: 100%;
 }
 
 .gameCat{
@@ -31,16 +32,15 @@ body {
 .gameImage{
     margin-top: 40px;
     border-radius: 8px;
-    width: 700px;
-    height: 500px;
+
 }
 
 .gameDescription{
     border-style: groove;
     font-family: sans-serif;
     word-wrap: break-word;
-    width: 700px;
-    height: 340px;
+    height:40%;
+
 }
 
 .devPfp{
@@ -51,3 +51,7 @@ body {
 .checked {
     color: orange;
   }
+
+#logout:hover{
+    background-color:blue;
+}
