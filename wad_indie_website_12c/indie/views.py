@@ -73,6 +73,15 @@ def show_user(request, username):
     try:
         user = UserProfile.objects.get(user__username=username)
         context_dict["user"] = user
+        if user.is_dev:
+            dev_games = Game.objects.filter(dev=user)
+            top_selling_games = dev_games.order_by("-downloads")
+            most_liked_games = dev_games.order_by("-likes")
+
+            context_dict["dev_games"] = dev_games
+            context_dict["top_selling_games"] = top_selling_games
+            context_dict["most_liked_games"] = most_liked_games
+
     except UserProfile.DoesNotExist:
         context_dict["user"] = None
 

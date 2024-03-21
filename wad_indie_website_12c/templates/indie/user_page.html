@@ -16,53 +16,29 @@
             {% if user.is_dev %}
             <div>
                 <h1>Uploaded Games</h1>
-                <div style="border: 2px solid cadetblue; width:1500px; height:300px;" class="tabs">
+                <div style="border: 2px solid cadetblue; width:90%; height:300px;" class="tabs">
                         <div class="tabs__layout">
-                            <!-- swap this out for get_games_list by this dev -->
-                            {% get_games_list featured_games %}
+                            {% get_games_list dev_games %}
                         </div>
                 </div>
             </div>
             <div>
-                <!-- This is the best columns -->
                 <div style="padding-top: 40px; display: flex;">
-                    <div style="border: 2px solid cadetblue; width:500px; height:300px; margin-left: 100px;" class="tabs">
+                    <div style="border: 2px solid cadetblue; width:30%; height:300px; margin-left: 10%;" class="tabs">
                         <div class="tabs__layout">
-                            <!-- swap this out for top seller -->
-                            {% get_games_list featured_games %}
+                            {% get_games_list top_selling_games %}
                         </div>
                         
                     </div>
-                    <div style="border: 2px solid cadetblue; width:500px; height:300px; margin-left: 200px;" class="tabs">
+                    <div style="border: 2px solid cadetblue; width:30%; height:300px; margin-left: 10%;" class="tabs">
                         <div class="tabs__layout">
-                            <!-- swap this out for top rated -->
-                            {% get_games_list featured_games %}
+                            {% get_games_list most_liked_games %}
                         </div>
                     </div>
                 </div>
-                <div style="padding-left: 100px; display: flex;">
+                <div style="padding-left: 10%; display: flex;">
                     <h2>Top Seller</h2>
-                    <h2 style="margin-left: 595px;">Top Rated</h2>
-                </div>
-
-                <!-- This is the wrost columns -->
-                <div style="padding-top: 40px;  display: flex;">
-                    <div style="border: 2px solid cadetblue; width:500px; height:300px; margin-left: 100px;" class="tabs">
-                        <div class="tabs__layout">
-                            <!-- swap this out for worst seller -->
-                            {% get_games_list featured_games %}
-                        </div>
-                    </div>
-                    <div style="border: 2px solid cadetblue; width:500px; height:300px; margin-left: 200px;" class="tabs">
-                        <div class="tabs__layout">
-                            <!-- swap this out for worst rated -->
-                            {% get_games_list featured_games %}
-                        </div>
-                    </div>
-                </div>
-                <div style="padding-left: 100px; display: flex;">
-                    <h2>Worst Seller</h2>
-                    <h2 style="margin-left: 595px;">Worst Rated</h2>
+                    <h2 style="margin-left: 52%;">Most Liked</h2>
                 </div>
             </div>
         </div>
