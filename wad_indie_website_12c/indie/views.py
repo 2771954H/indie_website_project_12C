@@ -162,10 +162,28 @@ def user_login(request):
     return render(request, "indie/login.html", context=context_dict)
 
 
+@login_required
+def like_game(request):
+    game_name_slug = request.GET["game_name_slug"]
+    try:
+        game = Game.objects.get(slug=game_name_slug)
+        game.likes = game.likes + 1
+        game.save()
+    except Game.DoesNotExist:
+        return HttpResponse(-1)
+    except ValueError:
+        return HttpResponse(-1)
+    return HttpResponse(game.likes)
+
+
 def paypal(request, game_name_slug):
-    game = Game.objects.get(slug=game_name_slug)
-    game.downloads += 1
-    context_dict = {"game": game}
+    context_dict = {}
+    try:
+        game = Game.objects.get(slug=game_name_slug)
+        game.downloads += 1
+        context_dict["game"] = game
+    except Game.DoesNotExist:
+        context_dict["game"] = None
 
     return render(request, "indie/paypal.html", context=context_dict)
 

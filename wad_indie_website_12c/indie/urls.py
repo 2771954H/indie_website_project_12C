@@ -16,4 +16,5 @@ urlpatterns = [
     path("logout/", views.user_logout, name="logout"),
     path("register", views.register, name="register"),
     path("paypal/<slug:game_name_slug>", views.paypal, name="paypal"),
+    path("like_game/", views.like_game, name="like_game"),
 ]

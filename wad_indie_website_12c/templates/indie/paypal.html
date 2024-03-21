@@ -21,14 +21,20 @@
             <div>
                 <img src="{% static 'images/paypul.png' %}" alt="paypal Logo" style="border-radius: 8px; height: 200px;"/>
             </div>
-            <div style="margin-top: 50px;">
-                <h1>You purchased "{{game.name}}"!</h1>
-            </div>
-            <div style="margin-top: 20px;">
-                <div style="display: flex;">
-                    <h1>Amount Paid: {{game.price_formatted}}</h1>
+            {% if game %}
+                <div style="margin-top: 50px;">
+                    <h1>You purchased "{{game.name}}"!</h1>
                 </div>
+                <div style="margin-top: 20px;">
+                    <div style="display: flex;">
+                        <h1>Amount Paid: {{game.price_formatted}}</h1>
+                    </div>
+                </div>
+            {% else %}
+            <div style="margin-top: 50px;">
+                <h1>Invalid purchase</h1>
             </div>
+            {% endif %}
             <div style="margin-top: 20px;">
                 <a href="{% url 'indie:index' %}">
                     <h1>Return</h1>

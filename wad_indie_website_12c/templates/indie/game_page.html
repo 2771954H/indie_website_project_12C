@@ -2,6 +2,12 @@
 {% load staticfiles %}
 
 <!-- HELLO! If you see this before the teams message please go to teams I explain why there is this here THANK YOU! -Jason(xiaozu) -->
+<title> 
+    {% block title_block %}
+        {{game.name}}
+    {% endblock %}
+
+</title>
 
 {% block body_block %}
 <div style="position:relative;"></div>
@@ -30,13 +36,23 @@
             <h2 class="gameDescription" style="font-size:14px;">
                 {{game.description}}
             </h2>
+            <div>
+                <strong id="like_count">{{ game.likes }}</strong> likes
+                {% if user.is_authenticated %}
+                <button id="like_btn"
+                    data-gameslug="{{ game.slug }}"
+                    class="btn btn-primary btn-sm"
+                    type="button">
+                    Like ❤️
+                </button>
+                {% endif %}
+            </div>
             <div style="text-align: center; border: 2px solid cadetblue; display:flex; justify-content:space-around;">
                 <a href="{% url 'indie:paypal' game.slug %}">
                     <h1 style="border-right:2px solid cadetblue; padding-right: 120px;">
                         Purchase
                     </h1>
                     <h1 style="font-family: sans-serif; padding-right: 20px;">
-                        
                         {{game.price_formatted}}
                     </h1>
                 </a>
@@ -94,5 +110,6 @@
             </div>
         {% endfor %}
     </div>
+    <script src="{% static "js/indie_ajax.js" %}" crossorigin="anonymous"></script>
 
 {% endblock %}
