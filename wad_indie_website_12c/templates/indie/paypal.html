@@ -17,16 +17,21 @@
     
     <body>
         {% block top_bar_block %}
-        <div style="display: flex; justify-content: flex-start; align-items: center;">
-            <div style="padding-left: 1050px;">
+        <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <div>
                 <img src="{% static 'images/paypul.png' %}" alt="paypal Logo" style="border-radius: 8px; height: 300px;"/>
             </div>
-        </div>
-        <div style="padding-left: 850px; padding-top: 50px;">
-            <div> 
-                <h1 style="font-size: 60px">You have successfully made a purchase!</h1>
+            <div style="margin-top: 50px;">
+                <h1 style="font-size: 60px;">You have successfully made a purchase!</h1>
             </div>
-            <div style="padding-left: 500px; padding-top: 200px;"> 
+            <div style="margin-top: 20px;">
+                <div style="display: flex;">
+                    <h1>Amount Paid: </h1>
+                    <!-- Replace Price with actual payment amount -->
+                    <h1 style="padding-left: 10px;">Price</h1>
+                </div>
+            </div>
+            <div style="margin-top: 20px;">
                 <a href="http://127.0.0.1:8000/indie">
                     <h1>Return</h1>
                 </a>
@@ -41,3 +46,5 @@
             
         {% block bottom_bar_block %}
         {% endblock %}  
+    <body>
+</html>
