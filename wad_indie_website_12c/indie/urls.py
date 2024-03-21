@@ -15,5 +15,5 @@ urlpatterns = [
     path("login/", views.user_login, name="login"),
     path("logout/", views.user_logout, name="logout"),
     path("register", views.register, name="register"),
-    path("paypal/<str:amount>", views.paypal, name="paypal"),
+    path("paypal/<slug:game_name_slug>", views.paypal, name="paypal"),
 ]

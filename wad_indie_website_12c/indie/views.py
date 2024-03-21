@@ -58,6 +58,9 @@ def show_game(request, game_name_slug):
 
     try:
         game = Game.objects.get(slug=game_name_slug)
+        game.views += 1
+        game.save()
+
         context_dict["game"] = game
         context_dict["dev"] = game.dev
         context_dict["feedback"] = Feedback.objects.filter(game=game)
@@ -159,8 +162,10 @@ def user_login(request):
     return render(request, "indie/login.html", context=context_dict)
 
 
-def paypal(request, amount):
-    context_dict = {"amount": amount}
+def paypal(request, game_name_slug):
+    game = Game.objects.get(slug=game_name_slug)
+    game.downloads += 1
+    context_dict = {"amount": game.price_formatted}
 
     return render(request, "indie/paypal.html", context=context_dict)
 
