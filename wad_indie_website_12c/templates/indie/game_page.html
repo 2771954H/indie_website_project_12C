@@ -31,7 +31,7 @@
                 {{game.description}}
             </h2>
             <div style="text-align: center; border: 2px solid cadetblue; display:flex; justify-content:space-around;">
-                <a href="http://127.0.0.1:8000/indie/paypal">
+                <a href="{% url 'indie:paypal' game.price_formatted %}">
                     <h1 style="border-right:2px solid cadetblue; padding-right: 120px;">
                         Purchase
                     </h1>

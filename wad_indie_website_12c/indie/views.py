@@ -149,8 +149,11 @@ def user_login(request):
             context_dict["error"] = "Invalid login details."
     return render(request, "indie/login.html", context=context_dict)
 
-def paypal(request):
-    return render(request, "indie/paypal.html")
+
+def paypal(request, amount):
+    context_dict = {"amount": amount}
+
+    return render(request, "indie/paypal.html", context=context_dict)
 
 
 @login_required
@@ -172,9 +175,9 @@ def dev_home(request):
 @login_required
 def upload_game(request):
     context_dict = {}
-    context_dict["pagename"] = 'Upload Game'
+    context_dict["pagename"] = "Upload Game"
     check_dev(request)
-    
+
     form = GameForm()
 
     if request.method == "POST":
@@ -186,9 +189,7 @@ def upload_game(request):
 
         else:
             print(form.errors)
-    
-    context_dict['form']= form
-    
+
+    context_dict["form"] = form
+
     return render(request, "indie/upload_game.html", context=context_dict)
-  
-    
