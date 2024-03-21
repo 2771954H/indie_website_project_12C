@@ -31,12 +31,15 @@
                 {{game.description}}
             </h2>
             <div style="text-align: center; border: 2px solid cadetblue; display:flex; justify-content:space-around;">
-                <h1 style="border-right:2px solid cadetblue; padding-right: 120px;">
-                    Purchase
-                </h1>
-                <h1 style="font-family: sans-serif; padding-right: 20px;">
-                    {{game.price_formatted}}
-                </h1>
+                <a href="http://127.0.0.1:8000/indie/paypal">
+                    <h1 style="border-right:2px solid cadetblue; padding-right: 120px;">
+                        Purchase
+                    </h1>
+                    <h1 style="font-family: sans-serif; padding-right: 20px;">
+                        
+                        {{game.price_formatted}}
+                    </h1>
+                </a>
             </div>
         </div>
         <div style="padding-left: 40px; max-width:10%;">

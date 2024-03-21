@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load indie_template_tags %} 
+
+<html>
+    <head>
+        <head>
+            <link rel="stylesheet" type="text/css" href="{% static 'css_sheets/index.css' %}">
+        </head>
+        <title>
+            Indie - 
+            {% block title_block %}
+            Base
+            {% endblock %}
+        </title>
+    </head>
+    
+    <body>
+        {% block top_bar_block %}
+        <div style="display: flex; justify-content: flex-start; align-items: center;">
+            <div style="padding-left: 1050px;">
+                <img src="{% static 'images/paypul.png' %}" alt="paypal Logo" style="border-radius: 8px; height: 300px;"/>
+            </div>
+        </div>
+        <div style="padding-left: 850px; padding-top: 50px;">
+            <div> 
+                <h1 style="font-size: 60px">You have successfully made a purchase!</h1>
+            </div>
+            <div style="padding-left: 500px; padding-top: 200px;"> 
+                <a href="http://127.0.0.1:8000/indie">
+                    <h1>Return</h1>
+                </a>
+            </div>
+        </div>
+        
+        {% endblock %}
+        <div>
+        {% block body_block %}
+        {% endblock %}
+        </div>
+            
+        {% block bottom_bar_block %}
+        {% endblock %}  

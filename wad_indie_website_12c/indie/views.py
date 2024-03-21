@@ -149,6 +149,9 @@ def user_login(request):
             context_dict["error"] = "Invalid login details."
     return render(request, "indie/login.html", context=context_dict)
 
+def paypal(request):
+    return render(request, "indie/paypal.html")
+
 
 @login_required
 def user_logout(request):
