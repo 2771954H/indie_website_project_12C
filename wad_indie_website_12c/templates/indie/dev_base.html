@@ -17,18 +17,33 @@
     
     <body>
         {% block top_bar_block %}
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <a href="http://127.0.0.1:8000/indie">
-                <img src="{% static 'images/logo.jpg' %}" alt="Indie Logo" style="border-radius: 8px; height:100px"/>
-            </a>
-            <h1 style="flex-grow: 1; text-align: center; margin-left: 20px;">Browse</h1>
-            <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:upload_game' %}">Upload Game</a></h1>
-            
-            {% if user.is_authenticated %}
-            <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:logout' %}">Logout</a></h1>
-            {% else %}
-                <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:login' %}">Login</a>
-            {% endif %}
+        <div style="display: flex; justify-content:flex-start; align-items:center">
+            <div>
+                <a href="http://127.0.0.1:8000/indie">
+                    <img src="{% static 'images/logo.jpg' %}" alt="Indie Logo" style="border-radius: 8px; height:100px"/>
+                </a>
+            </div>
+            <div style="margin-left: 120px;">
+                <h1 style="flex-grow: 1; text-align: center;">Dev Home</h1>
+            </div>
+            <div style="margin-left: 120px;">
+                <h1 style="text-align: right; margin: 0;"><a href="{% url 'indie:upload_game' %}">Upload Game</a></h1>
+            </div>
+            <div style="margin-left: 200px;">
+                <h1>
+                    <form action="{% url 'indie:search' %}" method="get">
+                        <label for="sitem">Search:</label>
+                        <input type="text" name="searchtext" placeholder="Enter Game/Developer" >
+                    </form>
+                </h1>
+            </div>
+            <div style="margin-left: 300px;">
+                {% if user.is_authenticated %}
+                <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:logout' %}">Logout</a></h1>
+                {% else %}
+                    <h1 style="width: 30%; text-align: right; margin: 0;"><a href="{% url 'indie:login' %}">Login</a>
+                {% endif %}
+            </div>
         </div>
         
         {% endblock %}

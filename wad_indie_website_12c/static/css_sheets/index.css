@@ -63,6 +63,15 @@ body {
     display: none;
 }
 
+.tabs__layout{
+    order: 1;
+    width: 100%;
+    border-top: 3px solid lightgray;
+    border-bottom: 3px solid lightgray;
+    /* line-height: 1.5; */
+    font-size: 0.9em;
+}
+
 .gtabs__content{
     padding-bottom: 200px;
     order: 1;
@@ -73,6 +82,8 @@ body {
     font-size: 0.9em;
     display: none;
 }
+
+
 
 /*customize look of label on select */
 .tabs__radio:checked+.tabs__label{

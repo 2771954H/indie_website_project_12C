@@ -1,22 +1,103 @@
-{% extends "indie/base.html" %}
+{% extends "indie/dev_base.html" %}
 {% load staticfiles %}
+{% load indie_template_tags %}
 
 <head>
     {% block title_block %}
-            {{user.user.username}}
-        {% endblock %}
+        {{user.user.username}}
+    {% endblock %}
 </head>
 
 {% block body_block %}
-    <h1>{{username}}</h1>
-    {% if user %}
-        {% if user.picture %}
-                <img class = "devPfp" src="{{ user.picture.url }}" alt="{{ dev }}">
-        {% else %}
-            <img class = "devPfp" src="{% static 'images/no_image.jpg' %}" alt="{{ dev }}">
-        {% endif %}
-        <p>Bio: {{user.bio}}</p>
-    {% else %}
-        <p>User with this name does not exist.</p>
-    {% endif %}
+    <!-- This is main body div -->
+    <div style="display: flex; justify-content: flex-start;">
+        <div>
+            <!-- This is the uploaded games column div -->
+            <div>
+                <h1>Uploaded Games</h1>
+                <div style="border: 2px solid cadetblue; width:1500px; height:300px;" class="tabs">
+                        <div class="tabs__layout">
+                            <!-- swap this out for get_games_list by this dev -->
+                            {% get_games_list featured_games %}
+                        </div>
+                </div>
+            </div>
+            <div>
+                <!-- This is the best columns -->
+                <div style="padding-top: 40px; display: flex;">
+                    <div style="border: 2px solid cadetblue; width:500px; height:300px; margin-left: 100px;" class="tabs">
+                        <div class="tabs__layout">
+                            <!-- swap this out for top seller -->
+                            {% get_games_list featured_games %}
+                        </div>
+                        
+                    </div>
+                    <div style="border: 2px solid cadetblue; width:500px; height:300px; margin-left: 200px;" class="tabs">
+                        <div class="tabs__layout">
+                            <!-- swap this out for top rated -->
+                            {% get_games_list featured_games %}
+                        </div>
+                    </div>
+                </div>
+                <div style="padding-left: 100px; display: flex;">
+                    <h2>Top Seller</h2>
+                    <h2 style="margin-left: 595px;">Top Rated</h2>
+                </div>
+
+                <!-- This is the wrost columns -->
+                <div style="padding-top: 40px;  display: flex;">
+                    <div style="border: 2px solid cadetblue; width:500px; height:300px; margin-left: 100px;" class="tabs">
+                        <div class="tabs__layout">
+                            <!-- swap this out for worst seller -->
+                            {% get_games_list featured_games %}
+                        </div>
+                    </div>
+                    <div style="border: 2px solid cadetblue; width:500px; height:300px; margin-left: 200px;" class="tabs">
+                        <div class="tabs__layout">
+                            <!-- swap this out for worst rated -->
+                            {% get_games_list featured_games %}
+                        </div>
+                    </div>
+                </div>
+                <div style="padding-left: 100px; display: flex;">
+                    <h2>Worst Seller</h2>
+                    <h2 style="margin-left: 595px;">Worst Rated</h2>
+                </div>
+            </div>
+        </div>
+        <!-- This is the dev profile tab div -->
+        <div style="border-style: groove;margin-left: 60px; margin-top: 10px; width:260px; height:400px;">
+            <!-- dev name div -->
+            <h1 style="word-wrap: break-word; text-align: center;">{{username}}</h1>
+            <!-- dev pfp div -->
+            <div style="padding-left: 30px; padding-bottom: 10px;">
+                {% if user %}
+                    {% if user.picture %}
+                        <img class = "devPfp" src="{{ user.picture.url }}" alt="{{ dev }}">
+                    {% else %}
+                        <img class = "devPfp" src="{% static 'images/no_image.jpg' %}" alt="{{ dev }}">
+                {% endif %}
+            </div>
+            <!-- Bio div -->
+            <div style="padding-left: 90px; border-top: 2px solid gray;">
+                    <h3>Bio: {{user.bio}}</h3>
+                {% else %}
+                    <h3>User with this name does not exist.</h3>
+                {% endif %}
+            </div>
+            <div style="padding-top: 50px;">
+                <div style="border-style: groove; height:360px;">
+                    <h2 style="text-align: center;">Recent Purchases/Tips:</h2>
+                    <div style="border-top: 2px solid grey;">
+                        <div style="text-align: center; word-wrap: break-word; padding-top: 10px;">
+                            <!-- swap this out for purchase history -->
+                            Put recent purchases and tips stuff here
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 {% endblock %}
