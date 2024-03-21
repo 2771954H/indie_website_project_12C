@@ -19,15 +19,14 @@
         {% block top_bar_block %}
         <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
             <div>
-                <img src="{% static 'images/paypul.png' %}" alt="paypal Logo" style="border-radius: 8px; height: 300px;"/>
+                <img src="{% static 'images/paypul.png' %}" alt="paypal Logo" style="border-radius: 8px; height: 200px;"/>
             </div>
             <div style="margin-top: 50px;">
-                <h1 style="font-size: 60px;">You have successfully made a purchase!</h1>
+                <h1>You purchased "{{game.name}}"!</h1>
             </div>
             <div style="margin-top: 20px;">
                 <div style="display: flex;">
-                    <h1>Amount Paid: </h1>
-                    <h1 style="padding-left: 10px;">{{amount}}</h1>
+                    <h1>Amount Paid: {{game.price_formatted}}</h1>
                 </div>
             </div>
             <div style="margin-top: 20px;">

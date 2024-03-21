@@ -165,7 +165,7 @@ def user_login(request):
 def paypal(request, game_name_slug):
     game = Game.objects.get(slug=game_name_slug)
     game.downloads += 1
-    context_dict = {"amount": game.price_formatted}
+    context_dict = {"game": game}
 
     return render(request, "indie/paypal.html", context=context_dict)
 
