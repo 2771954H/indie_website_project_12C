@@ -19,7 +19,7 @@
         {% block top_bar_block %}
         <div style="display: flex; justify-content:flex-start; align-items:center">
             <div>
-                <a href="http://127.0.0.1:8000/indie">
+                <a href="{% url 'indie:index' %}">
                     <img src="{% static 'images/logo.jpg' %}" alt="Indie Logo" style="border-radius: 8px; height:100px"/>
                 </a>
             </div>

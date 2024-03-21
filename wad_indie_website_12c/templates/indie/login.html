@@ -3,7 +3,7 @@
 
 {% block top_bar_block %}
 <div style="display: flex; justify-content: space-between; align-items: center;">
-    <a href="http://127.0.0.1:8000/indie">
+    <a href="{% url 'indie:index' %}">
         <img src="{% static 'images/logo.jpg' %}" alt="Indie Logo" style="border-radius: 8px; height:100px"/>
     </a>
     <h1 style="flex-grow: 1; text-align: center; margin-left: 20px;">Browse</h1>

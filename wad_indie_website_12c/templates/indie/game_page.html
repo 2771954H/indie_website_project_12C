@@ -45,7 +45,7 @@
         <div style="padding-left: 40px; max-width:10%;">
             <div style="border-style: groove; width: 300px; height: 625px;">
                 <div style="padding-left: 50px;">
-                    <a href="/indie/user/{{dev.user}}">
+                    <a href="{% url 'indie:show_user' dev.user %}">
                     {% if dev.picture %}
                         <img src="{{ game.image.url }}">
                     {% else %}
@@ -55,7 +55,7 @@
                 </div>
                 <div style="padding-left: 50px; text-align: center;">
                     <h1 style="word-wrap: break-word;">
-                        <a href="/indie/user/{{dev.user}}">{{dev.user}}</a>
+                        <a href="{% url 'indie:show_user' dev.user %}">{{dev.user}}</a>
                     </h1>
                     <div style=" text-align: left; margin-left: -12px;"><h1>
                         <span class="fa fa-star checked"></span>
