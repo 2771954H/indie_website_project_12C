@@ -10,76 +10,101 @@
 
 {% block body_block %}
     <!-- This is main body div -->
-    <div style="display: flex; justify-content: flex-start;">
+    {% if user.is_dev %}
+    <div style="display: flex; justify-content: space-between;">
         <div>
             <!-- This is the uploaded games column div -->
-            {% if user.is_dev %}
-            <div>
-                <h1>Uploaded Games</h1>
-                <div style="border: 2px solid cadetblue; width:90%; height:300px;" class="tabs">
-                        <div class="tabs__layout">
-                            {% get_games_list dev_games %}
-                        </div>
-                </div>
-            </div>
-            <div>
-                <div style="padding-top: 40px; display: flex;">
-                    <div style="border: 2px solid cadetblue; width:30%; height:300px; margin-left: 10%;" class="tabs">
-                        <div class="tabs__layout">
-                            {% get_games_list top_selling_games %}
-                        </div>
-                        
-                    </div>
-                    <div style="border: 2px solid cadetblue; width:30%; height:300px; margin-left: 10%;" class="tabs">
-                        <div class="tabs__layout">
-                            {% get_games_list most_liked_games %}
-                        </div>
+            <div style="width:1400px;">
+                <h1 style="border-top: 3px solid lightgray; padding-top: 20px;">Uploaded Games</h1>
+                <div style="width:100%; height:50%; display: flex;" class="tabs">
+                    <div  class="tabs__layout">
+                        {% get_games_list dev_games %}
                     </div>
                 </div>
-                <div style="padding-left: 10%; display: flex;">
-                    <h2>Top Seller</h2>
-                    <h2 style="margin-left: 52%;">Most Liked</h2>
+                <h1>Top Sellers</h1>
+                <div style="width:100%; height:50%; display: flex;" class="tabs">
+                    <div class="tabs__layout">
+                        {% get_games_list top_selling_games %}
+                    </div>
+                </div>
+                <h1>Most Liked</h1>
+                <div style="width:100%; height:50%; display: flex;" class="tabs">
+                    <div class="tabs__layout">
+                        {% get_games_list most_liked_games %}
+                    </div>
                 </div>
             </div>
         </div>
         {% endif %}
         <!-- This is the dev profile tab div -->
         <div>
-            <div style="border-style: groove;margin-left: 60px; margin-top: 10px; width:260px; height:400px;">
+            {% if user.is_dev %}
+            <div style="border-style: groove; margin-top: 10px; width:300px; height:400px; text-align: center;">
                 <!-- dev name div -->
-                <h1 style="word-wrap: break-word; text-align: center;">{{username}}</h1>
+                <h1 style="word-wrap: break-word;">{{username}}</h1>
                 <!-- dev pfp div -->
-                <div style="padding-left: 30px; padding-bottom: 10px;">
+                <div style="padding-bottom: 10px;">
                     {% if user %}
                         {% if user.picture %}
-                            <img class = "devPfp" src="{{ user.picture.url }}" alt="{{ dev }}">
+                            <img class="devPfp" src="{{ user.picture.url }}" alt="{{ dev }}">
                         {% else %}
-                            <img class = "devPfp" src="{% static 'images/no_image.jpg' %}" alt="{{ dev }}">
+                            <img class="devPfp" src="{% static 'images/no_image.jpg' %}" alt="{{ dev }}">
                     {% endif %}
                 </div>
                 <!-- Bio div -->
-                <div style="padding-left: 90px; border-top: 2px solid gray;">
-                        <h3>Bio: {{user.bio}}</h3>
+                <div style="border-top: 2px solid gray;">
+                    <h3>Bio: {{user.bio}}</h3>
                     {% else %}
                         <h3>User with this name does not exist.</h3>
                     {% endif %}
                 </div>
-            </div>
-            <div style="padding-top: 50px;">
-                <div style="border-style: groove; height:690px;">
-                    <h2 style="text-align: center;">Recent Purchases/Tips:</h2>
-                    <div style="border-top: 2px solid grey;">
-                        <div style="text-align: center; word-wrap: break-word; padding-top: 10px;">
-                            <!-- swap this out for purchase history -->
-                            Put recent purchases and tips stuff here
+                <div style="padding-top: 40%;">
+                    <div style="border-style: groove; height: 330px;">
+                        <h2 style="text-align: center;">Recent Purchases/Tips:</h2>
+                        <div style="border-top: 2px solid grey;">
+                            <div style="text-align: center; word-wrap: break-word; padding-top: 10px;">
+                                <!-- swap this out for purchase history -->
+                                Put recent purchases and tips stuff here
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {% else %}
+            <div style="display: flex; justify-content:center;">
+                <div style="border-style: groove; margin-top: 10px; width:30%; height:50%; text-align: center;">
+                    <!-- dev name div -->
+                    <h1 style="word-wrap: break-word;">{{username}}</h1>
+                    <!-- dev pfp div -->
+                    <div style="padding-bottom: 5%;">
+                        {% if user %}
+                            {% if user.picture %}
+                                <img class="devPfp" src="{{ user.picture.url }}" alt="{{ dev }}">
+                            {% else %}
+                                <img class="devPfp" src="{% static 'images/no_image.jpg' %}" alt="{{ dev }}">
+                        {% endif %}
+                    </div>
+                    <!-- Bio div -->
+                    <div style="border-top: 2px solid gray; margin-bottom: 20%;">
+                        <h3>Bio: {{user.bio}}</h3>
+                        {% else %}
+                            <h3>User with this name does not exist.</h3>
+                        {% endif %}
+                    </div>
+                </div>
+                <div style="margin-left: 10%;">
+                    <div style="border-style: groove; height:100%; width: 100%;">
+                        <h2 style="text-align: center;">Recent Purchases/Tips:</h2>
+                        <div style="border-top: 2px solid grey;">
+                            <div style="text-align: center; word-wrap: break-word; padding-top: 10px;">
+                                <!-- swap this out for purchase history -->
+                                Put recent purchases and tips stuff here
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         </div>
-
-
-
     </div>
-
 {% endblock %}

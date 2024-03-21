@@ -17,17 +17,23 @@
     
     <body>
         {% block top_bar_block %}
-        <div style="display: flex; justify-content:flex-start; align-items:center">
+        <div style="display: flex; justify-content:space-around; align-items:center">
             <div>
                 <a href="{% url 'indie:index' %}">
                     <img src="{% static 'images/logo.jpg' %}" alt="Indie Logo" style="border-radius: 8px; height:100px"/>
                 </a>
             </div>
             <div style="margin-left: 120px;">
-                <h1 style="flex-grow: 1; text-align: center;">Dev Home</h1>
+                {% if user.is_dev %}
+                    <h1 style="flex-grow: 1; text-align: center;">Dev Home</h1>
+                {% else %}
+                    <h1 style="flex-grow: 1; text-align: center;">User Home</h1>
+                {% endif %}
             </div>
             <div style="margin-left: 120px;">
-                <h1 style="text-align: right; margin: 0;"><a href="{% url 'indie:upload_game' %}">Upload Game</a></h1>
+                {% if user.is_dev %}
+                    <h1 style="text-align: right; margin: 0;"><a href="{% url 'indie:upload_game' %}">Upload Game</a></h1>
+                {% endif %}
             </div>
             <div style="margin-left: 200px;">
                 <h1>
@@ -50,12 +56,6 @@
         <div>
         {% block body_block %}
         {% endblock %}
-        </div>
-            
-        {% block bottom_bar_block %}
-            <li><a href="{% url 'indie:register' %}">Register</a></li>
-            <li><a href="{% url 'indie:login' %}">Login</a></li>
-
-        {% endblock %}        
+        </div>     
     </body>
 </html>
