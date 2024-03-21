@@ -66,27 +66,29 @@
             </div>
         </div>
         <!-- This is the dev profile tab div -->
-        <div style="border-style: groove;margin-left: 60px; margin-top: 10px; width:260px; height:400px;">
-            <!-- dev name div -->
-            <h1 style="word-wrap: break-word; text-align: center;">{{username}}</h1>
-            <!-- dev pfp div -->
-            <div style="padding-left: 30px; padding-bottom: 10px;">
-                {% if user %}
-                    {% if user.picture %}
-                        <img class = "devPfp" src="{{ user.picture.url }}" alt="{{ dev }}">
+        <div>
+            <div style="border-style: groove;margin-left: 60px; margin-top: 10px; width:260px; height:400px;">
+                <!-- dev name div -->
+                <h1 style="word-wrap: break-word; text-align: center;">{{username}}</h1>
+                <!-- dev pfp div -->
+                <div style="padding-left: 30px; padding-bottom: 10px;">
+                    {% if user %}
+                        {% if user.picture %}
+                            <img class = "devPfp" src="{{ user.picture.url }}" alt="{{ dev }}">
+                        {% else %}
+                            <img class = "devPfp" src="{% static 'images/no_image.jpg' %}" alt="{{ dev }}">
+                    {% endif %}
+                </div>
+                <!-- Bio div -->
+                <div style="padding-left: 90px; border-top: 2px solid gray;">
+                        <h3>Bio: {{user.bio}}</h3>
                     {% else %}
-                        <img class = "devPfp" src="{% static 'images/no_image.jpg' %}" alt="{{ dev }}">
-                {% endif %}
-            </div>
-            <!-- Bio div -->
-            <div style="padding-left: 90px; border-top: 2px solid gray;">
-                    <h3>Bio: {{user.bio}}</h3>
-                {% else %}
-                    <h3>User with this name does not exist.</h3>
-                {% endif %}
+                        <h3>User with this name does not exist.</h3>
+                    {% endif %}
+                </div>
             </div>
             <div style="padding-top: 50px;">
-                <div style="border-style: groove; height:360px;">
+                <div style="border-style: groove; height:690px;">
                     <h2 style="text-align: center;">Recent Purchases/Tips:</h2>
                     <div style="border-top: 2px solid grey;">
                         <div style="text-align: center; word-wrap: break-word; padding-top: 10px;">
@@ -97,6 +99,8 @@
                 </div>
             </div>
         </div>
+
+
 
     </div>
 
