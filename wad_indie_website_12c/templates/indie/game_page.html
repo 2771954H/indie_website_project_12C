@@ -9,19 +9,20 @@
         <!--actual game title-->
         {% if game %}
             <h1>{{ game.name }}<br/></h1>
+            <h2>{{game.genre}}</h2>
         {% else %}
             <h1>Unknown Game<br/></h1>
+            <h2>unknown genre</h2>
         {% endif %}
-        <span class="gameCat">
-        {% if game %}
-            <u>{{game.genre}}</u>
-        {% else %}
-            <u>unknown</u>
-        {% endif %}
+
         </span>
 </div>
     <div style="display: flex; justify-content: flex-start;">
-        <img src="{% static 'images/no_image.jpg' %}"  class="gameImage" style="max-width:40%; max-height:40%;" alt="Game Snapshot"/>
+        {% if game.image %}
+            <img src="{{ game.image.url }}">
+        {% else %}
+            <img src="{% static 'images/no_image.jpg' %}"  class="gameImage" style="max-width:40%; max-height:40%;" alt="Game Snapshot"/>
+        {% endif %}
         <div style="padding-left: 40px; max-width:35%;">
             <h1>
                 Description
@@ -41,12 +42,17 @@
         <div style="padding-left: 40px; max-width:10%;">
             <div style="border-style: groove; width: 300px; height: 625px;">
                 <div style="padding-left: 50px;">
-                    <!-- **needs replacement** replaces with actual dev pfp-->
-                    <img src="{% static 'images/no_image.jpg' %}"  class="devPfp" alt="Dev Pfp"/>
+                    <a href="/indie/user/{{dev.user}}">
+                    {% if dev.picture %}
+                        <img src="{{ game.image.url }}">
+                    {% else %}
+                        <img src="{% static 'images/no_image.jpg' %}"  class="devPfp" alt="Dev Pfp"/>
+                    {% endif %}
+                    </a>
                 </div>
                 <div style="padding-left: 50px; text-align: center;">
                     <h1 style="word-wrap: break-word;">
-                        {{dev.user}}
+                        <a href="/indie/user/{{dev.user}}">{{dev.user}}</a>
                     </h1>
                     <div style=" text-align: left; margin-left: -12px;"><h1>
                         <span class="fa fa-star checked"></span>
@@ -68,6 +74,22 @@
         </div>
     </div>
     <br>
-    <div></div>
+    <div>
+        <h2>reviews</h2>
+        {% for review in feedback %}
+            <div style="border-style:groove;">
+                <a style="font-size:22px;" href="/indie/user/{{review.userProfile.user}}">
+                    {% if review.userProfile.picture %}
+                        <img src="{{ review.userProfile.picture.url }}" class="userPfp">
+                    {% else %}
+                        <img src="{% static 'images/no_image.jpg' %}"  class="userPfp"/>
+                    {% endif %}
+                    User: {{review.userProfile.user}}
+                </a>
+                <p style="font-size:18px;">Rating: {{review.rating}}/10</p>
+                <p style="font-size:16px;">{{review.text}}</p>
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}
