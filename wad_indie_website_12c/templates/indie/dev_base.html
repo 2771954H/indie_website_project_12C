@@ -30,11 +30,6 @@
                     <h1 style="flex-grow: 1; text-align: center;">User Home</h1>
                 {% endif %}
             </div>
-            <div style="margin-left: 120px;">
-                {% if user.is_dev %}
-                    <h1 style="text-align: right; margin: 0;"><a href="{% url 'indie:upload_game' %}">Upload Game</a></h1>
-                {% endif %}
-            </div>
             <div style="margin-left: 200px;">
                 <h1>
                     <form action="{% url 'indie:search' %}" method="get">
