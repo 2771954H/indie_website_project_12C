@@ -7,7 +7,7 @@
 {% if registered %}
 <strong>Thank you for registering!</strong><br />
     {% if profile.is_dev %}
-    <a href="{% url 'indie:show_user' %}">Go to Dev Home Page.</a><br />
+    <a href="{% url 'indie:show_user' user.username%}">Go to Dev Home Page.</a><br />
     {% else %}
     <a href="{% url 'indie:index' %}">Go to Home Page.</a><br />
     {% endif %}
